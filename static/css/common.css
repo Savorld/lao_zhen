@@ -1,0 +1,78 @@
+body,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,html,img,legend,li,ol,p,ul {
+	margin: 0;
+	padding: 0
+}
+
+fieldset,img {
+	border: 0
+}
+
+li {
+	list-style: none
+}
+
+input {
+	outline: 0;
+	font-family: inherit
+}
+
+input[type=submit],input[type=button] {
+	cursor: pointer
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+td,th {
+	padding: 0
+}
+
+body{
+	font: 14px/1.4 "microsoft yahei";
+	color: #666;
+}
+
+em{
+	font-family: serif;
+	font-style: normal;
+}
+
+a{
+	text-decoration: none;
+	color: #666;
+}
+
+a:hover{
+	color: #000;
+}
+
+.l{
+	float: left
+}
+
+.r{
+	float: right
+}
+
+.clearfix:after,.clearfix:before,.container:after,.container:before {
+	display: table;
+	content: " "
+}
+
+.clearfix:after,.container:after {
+	clear: both
+}
+
+.container{
+	margin: 0 auto;
+	width: 1200px
+}
+
+.ellipsis{
+	display: block;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap
+}

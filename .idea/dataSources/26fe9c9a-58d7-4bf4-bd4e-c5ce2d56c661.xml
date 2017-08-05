@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="laozhen@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+    <root id="1"/>
+    <database id="2" parent="1" name="laozhen">
+      <ObjectId>16393</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-08-04.18:04:52.649</IntrospectionTimestamp>
+      <IntrospectionStateNumber>4667792</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="5" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="6" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="information_schema">
+      <ObjectId>12113</ObjectId>
+    </schema>
+    <sequence id="9" parent="3" name="dx_hots_h_id_seq">
+      <ObjectId>16782</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="10" parent="3" name="dx_links_l_id_seq">
+      <ObjectId>16790</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="11" parent="3" name="dx_slider_s_id_seq">
+      <ObjectId>16798</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="12" parent="3" name="e_hots_h_id_seq">
+      <ObjectId>16806</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="13" parent="3" name="e_left_l_id_seq">
+      <ObjectId>16814</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="14" parent="3" name="e_links_l_id_seq">
+      <ObjectId>16822</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="15" parent="3" name="e_lowright_lr_id_seq">
+      <ObjectId>16830</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="16" parent="3" name="e_right_r_id_seq">
+      <ObjectId>16838</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="17" parent="3" name="e_slider_s_id_seq">
+      <ObjectId>16846</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="18" parent="3" name="js_classes_c_id_seq">
+      <ObjectId>17059</ObjectId>
+      <StateNumber>4667773</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="19" parent="3" name="js_details_d_id_seq">
+      <ObjectId>17067</ObjectId>
+      <StateNumber>4667783</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="20" parent="3" name="lz_details_d_id_seq">
+      <ObjectId>16859</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="21" parent="3" name="lz_indexslider_is_id_seq">
+      <ObjectId>16870</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="22" parent="3" name="qy_filterclass_fc_id_seq">
+      <ObjectId>16878</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="23" parent="3" name="qy_hots_h_id_seq">
+      <ObjectId>16886</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="24" parent="3" name="qy_links_l_id_seq">
+      <ObjectId>16894</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="25" parent="3" name="qy_nofilterclass_nfc_id_seq">
+      <ObjectId>16902</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="26" parent="3" name="qy_nofilterlinks_nfl_id_seq">
+      <ObjectId>16910</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="27" parent="3" name="qy_slider_s_id_seq">
+      <ObjectId>16918</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="28" parent="3" name="qy_subfilter_sf_id_seq">
+      <ObjectId>16926</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="29" parent="3" name="shq_arealinks_al_id_seq">
+      <ObjectId>16934</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="30" parent="3" name="shq_detailclass_dc_id_seq">
+      <ObjectId>16945</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="31" parent="3" name="shq_hotcitys_hc_id_seq">
+      <ObjectId>16953</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="32" parent="3" name="shq_maininfo_mi_id_seq">
+      <ObjectId>16961</ObjectId>
+      <StateNumber>580</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="33" parent="3" name="dx_hots">
+      <ObjectId>16784</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="34" parent="3" name="dx_links">
+      <ObjectId>16792</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="35" parent="3" name="dx_slider">
+      <ObjectId>16800</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="36" parent="3" name="e_hots">
+      <ObjectId>16808</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="37" parent="3" name="e_left">
+      <ObjectId>16816</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="38" parent="3" name="e_links">
+      <ObjectId>16824</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="39" parent="3" name="e_lowright">
+      <ObjectId>16832</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="40" parent="3" name="e_right">
+      <ObjectId>16840</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="41" parent="3" name="e_slider">
+      <ObjectId>16848</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="42" parent="3" name="js_classes">
+      <ObjectId>17061</ObjectId>
+      <Comment>平台介绍分类</Comment>
+      <StateNumber>4667792</StateNumber>
+    </table>
+    <table id="43" parent="3" name="js_details">
+      <ObjectId>17069</ObjectId>
+      <Comment>详细介绍</Comment>
+      <StateNumber>4667792</StateNumber>
+    </table>
+    <table id="44" parent="3" name="lz_classes">
+      <ObjectId>16854</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="45" parent="3" name="lz_details">
+      <ObjectId>16861</ObjectId>
+      <StateNumber>4667500</StateNumber>
+    </table>
+    <table id="46" parent="3" name="lz_indexslider">
+      <ObjectId>16872</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="47" parent="3" name="qy_filterclass">
+      <ObjectId>16880</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="48" parent="3" name="qy_hots">
+      <ObjectId>16888</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="49" parent="3" name="qy_links">
+      <ObjectId>16896</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="50" parent="3" name="qy_nofilterclass">
+      <ObjectId>16904</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="51" parent="3" name="qy_nofilterlinks">
+      <ObjectId>16912</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="52" parent="3" name="qy_slider">
+      <ObjectId>16920</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="53" parent="3" name="qy_subfilter">
+      <ObjectId>16928</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="54" parent="3" name="shq_arealinks">
+      <ObjectId>16936</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="55" parent="3" name="shq_detailclass">
+      <ObjectId>16947</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="56" parent="3" name="shq_hotcitys">
+      <ObjectId>16955</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="57" parent="3" name="shq_maininfo">
+      <ObjectId>16963</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <column id="58" parent="33" name="h_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;dx_hots_h_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="59" parent="33" name="h_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="60" parent="33" name="h_desc">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="61" parent="33" name="dx_hots_pkey">
+      <ObjectId>16788</ObjectId>
+      <ColNames>h_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="62" parent="33" name="dx_hots_pkey">
+      <ObjectId>16789</ObjectId>
+      <ColNames>h_id</ColNames>
+      <UnderlyingIndexName>dx_hots_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="63" parent="34" name="l_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;dx_links_l_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="64" parent="34" name="l_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="65" parent="34" name="l_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="66" parent="34" name="l_desc">
+      <Position>4</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="67" parent="34" name="l_areanum">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="68" parent="34" name="l_pclassid">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="69" parent="34" name="dx_links_pkey">
+      <ObjectId>16796</ObjectId>
+      <ColNames>l_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="70" parent="34" name="dx_links_pkey">
+      <ObjectId>16797</ObjectId>
+      <ColNames>l_id</ColNames>
+      <UnderlyingIndexName>dx_links_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="71" parent="34" name="dx_links_l_pclassid_fkey">
+      <ObjectId>16972</ObjectId>
+      <ColNames>l_pclassid</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="72" parent="35" name="s_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;dx_slider_s_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="73" parent="35" name="s_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="74" parent="35" name="s_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="75" parent="35" name="s_pclassid">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="76" parent="35" name="dx_slider_pkey">
+      <ObjectId>16804</ObjectId>
+      <ColNames>s_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="77" parent="35" name="dx_slider_pkey">
+      <ObjectId>16805</ObjectId>
+      <ColNames>s_id</ColNames>
+      <UnderlyingIndexName>dx_slider_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="78" parent="35" name="dx_slider_s_pclassid_fkey">
+      <ObjectId>16977</ObjectId>
+      <ColNames>s_pclassid</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="79" parent="36" name="h_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;e_hots_h_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="80" parent="36" name="h_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="81" parent="36" name="h_desc">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="82" parent="36" name="e_hots_pkey">
+      <ObjectId>16812</ObjectId>
+      <ColNames>h_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="83" parent="36" name="e_hots_pkey">
+      <ObjectId>16813</ObjectId>
+      <ColNames>h_id</ColNames>
+      <UnderlyingIndexName>e_hots_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="84" parent="37" name="l_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;e_left_l_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="85" parent="37" name="l_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="86" parent="37" name="l_desc">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="87" parent="37" name="e_left_pkey">
+      <ObjectId>16820</ObjectId>
+      <ColNames>l_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="88" parent="37" name="e_left_pkey">
+      <ObjectId>16821</ObjectId>
+      <ColNames>l_id</ColNames>
+      <UnderlyingIndexName>e_left_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="89" parent="38" name="l_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;e_links_l_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="90" parent="38" name="l_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="91" parent="38" name="l_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="92" parent="38" name="l_desc">
+      <Position>4</Position>
+      <DataType>varchar(128)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="93" parent="38" name="l_pclassid">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="94" parent="38" name="e_links_pkey">
+      <ObjectId>16828</ObjectId>
+      <ColNames>l_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="95" parent="38" name="e_links_pkey">
+      <ObjectId>16829</ObjectId>
+      <ColNames>l_id</ColNames>
+      <UnderlyingIndexName>e_links_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="96" parent="38" name="e_links_l_pclassid_fkey">
+      <ObjectId>16982</ObjectId>
+      <ColNames>l_pclassid</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="97" parent="39" name="lr_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;e_lowright_lr_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="98" parent="39" name="lr_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="99" parent="39" name="lr_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="100" parent="39" name="lr_desc">
+      <Position>4</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="101" parent="39" name="e_lowright_pkey">
+      <ObjectId>16836</ObjectId>
+      <ColNames>lr_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="102" parent="39" name="e_lowright_pkey">
+      <ObjectId>16837</ObjectId>
+      <ColNames>lr_id</ColNames>
+      <UnderlyingIndexName>e_lowright_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="103" parent="40" name="r_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;e_right_r_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="104" parent="40" name="r_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="105" parent="40" name="r_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="106" parent="40" name="r_desc">
+      <Position>4</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="107" parent="40" name="e_right_pkey">
+      <ObjectId>16844</ObjectId>
+      <ColNames>r_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="108" parent="40" name="e_right_pkey">
+      <ObjectId>16845</ObjectId>
+      <ColNames>r_id</ColNames>
+      <UnderlyingIndexName>e_right_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="109" parent="41" name="s_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;e_slider_s_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="110" parent="41" name="s_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="111" parent="41" name="s_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="112" parent="41" name="s_desc">
+      <Position>4</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="113" parent="41" name="e_slider_pkey">
+      <ObjectId>16852</ObjectId>
+      <ColNames>s_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="114" parent="41" name="e_slider_pkey">
+      <ObjectId>16853</ObjectId>
+      <ColNames>s_id</ColNames>
+      <UnderlyingIndexName>e_slider_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="115" parent="42" name="c_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4667773</StateNumber>
+      <DefaultExpression>nextval(&apos;js_classes_c_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="116" parent="42" name="c_name">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4667773</StateNumber>
+    </column>
+    <column id="117" parent="42" name="c_level">
+      <Position>3</Position>
+      <DataType>smallint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4667776</StateNumber>
+    </column>
+    <index id="118" parent="42" name="js_classes_pkey">
+      <ObjectId>17065</ObjectId>
+      <ColNames>c_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="119" parent="42" name="js_classes_pkey">
+      <ObjectId>17066</ObjectId>
+      <ColNames>c_id</ColNames>
+      <UnderlyingIndexName>js_classes_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="120" parent="43" name="d_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4667783</StateNumber>
+      <DefaultExpression>nextval(&apos;js_details_d_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="121" parent="43" name="d_tit">
+      <Position>2</Position>
+      <DataType>varchar(256)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4667783</StateNumber>
+    </column>
+    <column id="122" parent="43" name="d_con">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4667783</StateNumber>
+    </column>
+    <column id="123" parent="43" name="d_pclassid">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4667791</StateNumber>
+    </column>
+    <index id="124" parent="43" name="js_details_pkey">
+      <ObjectId>17076</ObjectId>
+      <ColNames>d_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="125" parent="43" name="js_details_pkey">
+      <ObjectId>17077</ObjectId>
+      <ColNames>d_id</ColNames>
+      <UnderlyingIndexName>js_details_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="126" parent="43" name="js_details_js_classes_c_id_fk">
+      <ObjectId>17088</ObjectId>
+      <ColNames>d_pclassid</ColNames>
+      <RefTableName>js_classes</RefTableName>
+      <RefKeyName>js_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="127" parent="44" name="c_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="128" parent="44" name="c_name">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="129" parent="44" name="c_pid">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="130" parent="44" name="c_level">
+      <Position>4</Position>
+      <DataType>smallint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="131" parent="44" name="c_img">
+      <Position>5</Position>
+      <DataType>varchar(128)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="132" parent="44" name="lz_classes_pkey">
+      <ObjectId>16857</ObjectId>
+      <ColNames>c_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="133" parent="44" name="lz_classes_c_name_uindex">
+      <ObjectId>16987</ObjectId>
+      <ColNames>c_name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="134" parent="44" name="lz_classes_pkey">
+      <ObjectId>16858</ObjectId>
+      <ColNames>c_id</ColNames>
+      <UnderlyingIndexName>lz_classes_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="135" parent="45" name="d_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;lz_details_d_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="136" parent="45" name="d_img">
+      <Position>2</Position>
+      <DataType>varchar(256)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="137" parent="45" name="d_url">
+      <Position>3</Position>
+      <DataType>varchar(256)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="138" parent="45" name="d_desc">
+      <Position>4</Position>
+      <DataType>varchar(512)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="139" parent="45" name="d_class_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="140" parent="45" name="d_hot_order">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="141" parent="45" name="lz_details_pkey">
+      <ObjectId>16868</ObjectId>
+      <ColNames>d_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="142" parent="45" name="lz_details_pkey">
+      <ObjectId>16869</ObjectId>
+      <ColNames>d_id</ColNames>
+      <UnderlyingIndexName>lz_details_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="143" parent="45" name="lz_details_d_class_id_fkey">
+      <ObjectId>16988</ObjectId>
+      <ColNames>d_class_id</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="144" parent="46" name="is_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;lz_indexslider_is_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="145" parent="46" name="is_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="146" parent="46" name="is_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="147" parent="46" name="is_classid">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="148" parent="46" name="is_pos">
+      <Position>5</Position>
+      <DataType>smallint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="149" parent="46" name="lz_indexslider_pkey">
+      <ObjectId>16876</ObjectId>
+      <ColNames>is_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="150" parent="46" name="lz_indexslider_pkey">
+      <ObjectId>16877</ObjectId>
+      <ColNames>is_id</ColNames>
+      <UnderlyingIndexName>lz_indexslider_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="151" parent="46" name="lz_indexslider_is_classid_fkey">
+      <ObjectId>16993</ObjectId>
+      <ColNames>is_classid</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="152" parent="47" name="fc_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;qy_filterclass_fc_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="153" parent="47" name="fc_name">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="154" parent="47" name="fc_pclassid">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="155" parent="47" name="qy_filterclass_pkey">
+      <ObjectId>16884</ObjectId>
+      <ColNames>fc_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="156" parent="47" name="qy_filterclass_pkey">
+      <ObjectId>16885</ObjectId>
+      <ColNames>fc_id</ColNames>
+      <UnderlyingIndexName>qy_filterclass_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="157" parent="47" name="qy_filterclass_fc_pclassid_fkey">
+      <ObjectId>16998</ObjectId>
+      <ColNames>fc_pclassid</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="158" parent="48" name="h_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;qy_hots_h_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="159" parent="48" name="h_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="160" parent="48" name="h_desc">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="161" parent="48" name="h_order">
+      <Position>4</Position>
+      <DataType>smallint|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="162" parent="48" name="qy_hots_pkey">
+      <ObjectId>16892</ObjectId>
+      <ColNames>h_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="163" parent="48" name="qy_hots_pkey">
+      <ObjectId>16893</ObjectId>
+      <ColNames>h_id</ColNames>
+      <UnderlyingIndexName>qy_hots_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="164" parent="49" name="l_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;qy_links_l_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="165" parent="49" name="l_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="166" parent="49" name="l_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="167" parent="49" name="l_desc">
+      <Position>4</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="168" parent="49" name="l_pclassid">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="169" parent="49" name="l_areanum">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="170" parent="49" name="qy_links_pkey">
+      <ObjectId>16900</ObjectId>
+      <ColNames>l_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="171" parent="49" name="qy_links_pkey">
+      <ObjectId>16901</ObjectId>
+      <ColNames>l_id</ColNames>
+      <UnderlyingIndexName>qy_links_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="172" parent="49" name="qy_links_l_pclassid_fkey">
+      <ObjectId>17003</ObjectId>
+      <ColNames>l_pclassid</ColNames>
+      <RefTableName>qy_subfilter</RefTableName>
+      <RefKeyName>qy_subfilter_pkey</RefKeyName>
+      <RefColNames>sf_id</RefColNames>
+    </foreign-key>
+    <column id="173" parent="50" name="nfc_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;qy_nofilterclass_nfc_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="174" parent="50" name="nfc_name">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="175" parent="50" name="nfc_pclassid">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="176" parent="50" name="qy_nofilterclass_pkey">
+      <ObjectId>16908</ObjectId>
+      <ColNames>nfc_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="177" parent="50" name="qy_nofilterclass_pkey">
+      <ObjectId>16909</ObjectId>
+      <ColNames>nfc_id</ColNames>
+      <UnderlyingIndexName>qy_nofilterclass_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="178" parent="50" name="qy_nofilterclass_nfc_pclassid_fkey">
+      <ObjectId>17008</ObjectId>
+      <ColNames>nfc_pclassid</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="179" parent="51" name="nfl_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;qy_nofilterlinks_nfl_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="180" parent="51" name="nfl_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="181" parent="51" name="nfl_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="182" parent="51" name="nfl_desc">
+      <Position>4</Position>
+      <DataType>varchar(64)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="183" parent="51" name="nfl_pclassid">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="184" parent="51" name="qy_nofilterlinks_pkey">
+      <ObjectId>16916</ObjectId>
+      <ColNames>nfl_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="185" parent="51" name="qy_nofilterlinks_pkey">
+      <ObjectId>16917</ObjectId>
+      <ColNames>nfl_id</ColNames>
+      <UnderlyingIndexName>qy_nofilterlinks_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="186" parent="51" name="qy_nofilterlinks_nfl_pclassid_fkey">
+      <ObjectId>17013</ObjectId>
+      <ColNames>nfl_pclassid</ColNames>
+      <RefTableName>qy_nofilterclass</RefTableName>
+      <RefKeyName>qy_nofilterclass_pkey</RefKeyName>
+      <RefColNames>nfc_id</RefColNames>
+    </foreign-key>
+    <column id="187" parent="52" name="s_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;qy_slider_s_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="188" parent="52" name="s_url">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="189" parent="52" name="s_img">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="190" parent="52" name="s_classid">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="191" parent="52" name="qy_slider_pkey">
+      <ObjectId>16924</ObjectId>
+      <ColNames>s_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="192" parent="52" name="qy_slider_pkey">
+      <ObjectId>16925</ObjectId>
+      <ColNames>s_id</ColNames>
+      <UnderlyingIndexName>qy_slider_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="193" parent="52" name="qy_slider_s_classid_fkey">
+      <ObjectId>17018</ObjectId>
+      <ColNames>s_classid</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="194" parent="53" name="sf_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;qy_subfilter_sf_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="195" parent="53" name="sf_name">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="196" parent="53" name="sf_pclassid">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="197" parent="53" name="qy_subfilter_pkey">
+      <ObjectId>16932</ObjectId>
+      <ColNames>sf_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="198" parent="53" name="qy_subfilter_pkey">
+      <ObjectId>16933</ObjectId>
+      <ColNames>sf_id</ColNames>
+      <UnderlyingIndexName>qy_subfilter_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="199" parent="53" name="qy_subfilter_sf_pclassid_fkey">
+      <ObjectId>17023</ObjectId>
+      <ColNames>sf_pclassid</ColNames>
+      <RefTableName>qy_filterclass</RefTableName>
+      <RefKeyName>qy_filterclass_pkey</RefKeyName>
+      <RefColNames>fc_id</RefColNames>
+    </foreign-key>
+    <column id="200" parent="54" name="al_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;shq_arealinks_al_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="201" parent="54" name="al_img">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="202" parent="54" name="al_url">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="203" parent="54" name="al_desc">
+      <Position>4</Position>
+      <DataType>varchar(256)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="204" parent="54" name="al_declass_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="205" parent="54" name="al_areaid">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="206" parent="54" name="shq_arealinks_pkey">
+      <ObjectId>16943</ObjectId>
+      <ColNames>al_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="207" parent="54" name="shq_arealinks_pkey">
+      <ObjectId>16944</ObjectId>
+      <ColNames>al_id</ColNames>
+      <UnderlyingIndexName>shq_arealinks_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="208" parent="54" name="shq_arealinks_al_declass_id_fkey">
+      <ObjectId>17028</ObjectId>
+      <ColNames>al_declass_id</ColNames>
+      <RefTableName>shq_detailclass</RefTableName>
+      <RefKeyName>shq_detailclass_pkey</RefKeyName>
+      <RefColNames>dc_id</RefColNames>
+    </foreign-key>
+    <column id="209" parent="55" name="dc_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;shq_detailclass_dc_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="210" parent="55" name="dc_name">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="211" parent="55" name="dc_pclass_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="212" parent="55" name="shq_detailclass_pkey">
+      <ObjectId>16951</ObjectId>
+      <ColNames>dc_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="213" parent="55" name="shq_detailclass_pkey">
+      <ObjectId>16952</ObjectId>
+      <ColNames>dc_id</ColNames>
+      <UnderlyingIndexName>shq_detailclass_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="214" parent="55" name="shq_detailclass_dc_pclass_id_fkey">
+      <ObjectId>17033</ObjectId>
+      <ColNames>dc_pclass_id</ColNames>
+      <RefTableName>lz_classes</RefTableName>
+      <RefKeyName>lz_classes_pkey</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <column id="215" parent="56" name="hc_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;shq_hotcitys_hc_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="216" parent="56" name="hc_name">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="217" parent="56" name="hc_order">
+      <Position>3</Position>
+      <DataType>smallint|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="218" parent="56" name="hc_num">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="219" parent="56" name="shq_hotcitys_pkey">
+      <ObjectId>16959</ObjectId>
+      <ColNames>hc_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="220" parent="56" name="lz_hotcitys_hc_name_uindex">
+      <ObjectId>17038</ObjectId>
+      <ColNames>hc_name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="221" parent="56" name="shq_hotcitys_pkey">
+      <ObjectId>16960</ObjectId>
+      <ColNames>hc_id</ColNames>
+      <UnderlyingIndexName>shq_hotcitys_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="222" parent="57" name="mi_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+      <DefaultExpression>nextval(&apos;shq_maininfo_mi_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="223" parent="57" name="mi_img">
+      <Position>2</Position>
+      <DataType>varchar(256)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="224" parent="57" name="mi_url">
+      <Position>3</Position>
+      <DataType>varchar(256)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="225" parent="57" name="mi_desc">
+      <Position>4</Position>
+      <DataType>varchar(256)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="226" parent="57" name="mi_city">
+      <Position>5</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="227" parent="57" name="mi_pos">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="228" parent="57" name="shq_maininfo_pkey">
+      <ObjectId>16970</ObjectId>
+      <ColNames>mi_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="229" parent="57" name="shq_maininfo_pkey">
+      <ObjectId>16971</ObjectId>
+      <ColNames>mi_id</ColNames>
+      <UnderlyingIndexName>shq_maininfo_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

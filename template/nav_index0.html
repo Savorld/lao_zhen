@@ -1,0 +1,170 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="main">
+    <div class="m-top h-mid-topBg{{cid}}">
+        <div class="tit">
+            <h2>{{cla_name[0]}}</h2>
+            <img src="img/home-tit-1.png"/>
+        </div>
+        <div class="m-menu">
+            <ul class="m-classify star-nav">
+                {%for s_ind, s_cl in enumerate(sub_cla)%}
+                <li>
+                    <a href="/intoClass0-{{s_ind}}">{{s_cl[0]}}</a>
+                </li>
+                {%end%}
+            </ul>
+        </div>
+        <div class="m-hot">
+            <span>热门：</span>
+            {%for h in hot%}
+            <a href="">{{h[0]}}</a>
+            {%end%}
+        </div>
+    </div>
+    <div class="m-block">
+        <div class="brand-box">
+            <ul class="brand-roll-lst">
+                {%for ind, i in enumerate(range(3))%}
+                <div class="nav-index0-b{{i}}">
+                    {%for d in details[9*ind:9*ind+9]%}
+                    <li>
+                        <a href="{{d[1]}}">
+                            <img src="{{d[0]}}"/>
+                        </a>
+                    </li>
+                    {%end%}
+                </div>
+                {%end%}
+            </ul>
+        </div>
+        <div class="search-box">
+            <div class="sh-pic">
+                <img src="img/sh-1.jpg"/>
+            </div>
+            <form action="" class="sh-form">
+                <div class="sh-classify">
+                    <a href class="active">网页</a>
+                    <a href="">图片</a>
+                    <a href="">地图</a>
+                </div>
+                <div class="sh-input">
+                    <span class="sh-img"></span>
+                    <div class="sh-text l">
+                        <input type="text"/>
+                    </div>
+                    <div class="sh-btn l">
+                        <input type="submit" name="" id="" value="搜索"/>
+                    </div>
+                </div>
+                <div class="sh-type">
+                    <label for="du"><input type="radio" id="du" name="sh-type"
+                                           checked="checked"/>百度</label>
+                    <label for="gs"><input type="radio" id="gs" name="sh-type"/>国搜</label>
+                    <label for="yd"><input type="radio" id="yd"
+                                           name="sh-type"/>搜狗</label>
+                    <label for="hs"><input type="radio" id="hs"
+                                           name="sh-type"/>好搜</label>
+                    <label for="gd"><input type="radio" id="gd"
+                                           name="sh-type"/>高德</label>
+
+                </div>
+            </form>
+            <div class="sh-mail">
+                <a href="">
+                    邮箱登录
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{%end%}
+
+{%block script%}
+<script>
+    $(".banner").slide({
+        mainCell: "ul",
+        titCell: "ol",
+        autoPage: true,
+        effect: "fold",
+        autoPlay: true
+    });
+    $("#brand-roll").slide({
+        mainCell: ".brand-roll",
+        titCenll: 'ul',
+        autoPage: true,
+        effect: "left",
+        autoPlay: true
+    });
+    $(function () {
+        index = window.location.href.substr(-1);
+        $('.star-nav').children().eq(index).children().addClass('active');
+        $("label[for='gd']").hide();
+        $("label[for='hs']").hide();
+        $('.sh-classify a').click(function () {
+            event.preventDefault();
+            $(this).addClass('active').siblings().removeClass('active');
+            search_1 = $('.sh-classify a').index($(this));
+            if (search_1 == 0) {
+                $("label[for='yd']").show();
+                $("label[for='gs']").show();
+                $("label[for='hs']").hide();
+                $("label[for='gd']").hide();
+                $("label[for='du'] input").prop('checked', 'true').siblings().removeAttr('checked');
+            }
+            if (search_1 == 1) {
+                $("label[for='yd']").hide();
+                $("label[for='gs']").hide();
+                $("label[for='hs']").show();
+                $("label[for='gd']").hide();
+                $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
+             }
+
+            if (search_1 == 2) {
+                $("label[for='yd']").hide();
+                $("label[for='gs']").hide();
+                $("label[for='hs']").hide();
+                $("label[for='gd']").show();
+                $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
+            }
+
+        });
+
+        $('.sh-btn input').click(function () {
+            event.preventDefault();
+            search_1 = $('.sh-classify a').index($('.sh-classify .active'));
+            search_2 =
+                $('.sh-type input').index($('.sh-type input').filter('[checked="checked"]'));
+            key_word = $('.sh-text input').val();
+            if (search_1 == 0) {
+                if (search_2 == 0) {
+                    window.open('http://www.baidu.com/s?wd=' + key_word);
+                }
+                if (search_2 == 1) {
+                    window.open('http://www.chinaso.com/search/pagesearch.htm?q=' + key_word);
+
+                }
+                else {
+                    window.open('https://www.sogou.com/web?query=' + key_word);
+
+                }
+            }
+            if (search_1 == 1) {
+                if (search_2 == 0) {
+                    window.open('http://image.baidu.com/search/index?tn=baiduimage&ps=1&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&word=' + key_word);
+                }
+                else {
+                    window.open('http://image.so.com/i?q=' + key_word);
+                }
+            }
+            if (search_1 == 2) {
+                if (search_2 == 0) {
+                    window.open('http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D' + key_word);
+                }
+                else {
+                    window.open('http://ditu.amap.com/search?query=' + key_word);
+                }
+            }
+        });    })
+</script>
+{%end%}

@@ -1,0 +1,638 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="main">
+    <div class="m-top h-mid-topBg{{cid}}">
+        <div class="tit">
+            <h2>{{cla_name[0]}}</h2>
+            <img src="img/home-tit-1.png"/>
+        </div>
+        <div class="m-menu">
+            <ul class="m-classify">
+                {%for q_c in qy_classes%}
+                <li>
+                    <a>{{q_c[0]}}</a>
+                </li>
+                {%end%}
+            </ul>
+        </div>
+        <div class="m-hot">
+            <span>热门：</span>
+            {%for q_h in qy_hots%}
+            <a href="{{q_h[0]}}">{{q_h[1]}}</a>
+            {%end%}
+        </div>
+    </div>
+    <div class="m-block">
+        <div class="dx-banner" id="banner0">
+            <ul>
+                <li>
+                    <a href="http://www.baidu.com">
+                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121601178.jpg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">
+                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121513457.jpg"/>
+                    </a>
+                </li>
+            </ul>
+            <ol class="banner-focus">
+                <li></li>
+                <li></li>
+            </ol>
+            <a href="javascript:void(0);" class="prev"></a>
+            <a href="javascript:void(0);" class="next"></a>
+        </div>
+        <div class="m-col">
+            <div class="m-col-2">
+                <span class="tit">科技</span>
+                <div class="m-col-img">
+                    <a href="">
+                        <img src="img/pic/col-1.jpg"/>
+                        <p>Apple Pay入局一周年 “三分天下”梦遥远</p>
+                    </a>
+                </div>
+                <div class="m-col-lst">
+                    <a href="">公安部：中国与法国将实现驾驶证互认换领</a>
+                    <a href="">安监总局原局长杨栋梁受贿2849万 一审获刑15年</a>
+                    <a href="">福建某法院执行罚金300万收取3万费用 称很普遍</a>
+                    <a href="">福建某法院执行罚金300万收取3万费用 称很普遍</a>
+                </div>
+                <div class="m-col-lst">
+                    <a href="">公安部：中国与法国将实现驾驶证互认换领</a>
+                    <a href="">安监总局原局长杨栋梁受贿2849万 一审获刑15年</a>
+                    <a href="">福建某法院执行罚金300万收取3万费用 称很普遍</a>
+                    <a href="">福建某法院执行罚金300万收取3万费用 称很普遍</a>
+                </div>
+            </div>
+            <div class="m-col-2">
+                <span class="tit">科技</span>
+                <div class="m-col-img">
+                    <a href="">
+                        <img src="img/pic/col-2.jpg"/>
+                        <p>Apple Pay入局一周年 “三分天下”梦遥远</p>
+                    </a>
+                </div>
+                <div class="m-col-lst">
+                    <a href="">公安部：中国与法国将实现驾驶证互认换领</a>
+                    <a href="">安监总局原局长杨栋梁受贿2849万 一审获刑15年</a>
+                    <a href="">福建某法院执行罚金300万收取3万费用 称很普遍</a>
+                    <a href="">福建某法院执行罚金300万收取3万费用 称很普遍</a>
+                </div>
+                <div class="m-col-lst">
+                    <a href="">公安部：中国与法国将实现驾驶证互认换领</a>
+                    <a href="">安监总局原局长杨栋梁受贿2849万 一审获刑15年</a>
+                    <a href="">福建某法院执行罚金300万收取3万费用 称很普遍</a>
+                    <a href="">福建某法院执行罚金300万收取3万费用 称很普遍</a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="brand-menu">
+                <a class="active">妇婴童</a>
+                <a>自行车</a>
+                <a>小汽车</a>
+            </div>
+            <div class="brand-lst">
+                <ul>
+                    <li>
+                        <a href="http://www.baidu.com">
+                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110324268.jpg"/>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="http://www.baidu.com">
+                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110308911.jpg"/>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="http://www.baidu.com">
+                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110249484.jpg"/>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="http://www.baidu.com">
+                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110227217.jpg"/>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="http://www.baidu.com">
+                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110201172.jpg"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.baidu.com">
+                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110201172.jpg"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.baidu.com">
+                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110201172.jpg"/>
+                        </a>
+                    </li>
+                                        <li>
+                        <a href="http://www.baidu.com">
+                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110201172.jpg"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dx-banner" id="banner3">
+            <ul>
+                <li>
+                    <a href="http://www.baidu.com">
+                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121601178.jpg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">
+                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121513457.jpg"/>
+                    </a>
+                </li>
+            </ul>
+            <ol class="banner-focus">
+                <li></li>
+                <li></li>
+            </ol>
+            <a href="javascript:;" class="prev"></a>
+            <a href="javascript:;" class="next"></a>
+        </div>
+        <div class="dx-banner" id="banner4">
+            <ul>
+                <li>
+                    <a href="http://www.baidu.com">
+                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121601178.jpg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">
+                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121513457.jpg"/>
+                    </a>
+                </li>
+            </ul>
+            <ol class="banner-focus">
+                <li></li>
+                <li></li>
+            </ol>
+            <a href="javascript:;" class="prev"></a>
+            <a href="javascript:;" class="next"></a>
+        </div>
+    </div>
+</div>
+<div class="m-block" style="display: none;">
+    <div class="screen-box">
+        <div class="screen-tag">
+            为你找到
+            <div id="search" style="display: inline ;"></div>
+
+            <span id='num'></span>
+            <a href="javascritp:;" class="btn-screen">按条件筛选</a>
+        </div>
+        <div class="screen-down">
+            <div class="screen-down-bd">
+                <div class="screen-down-col" id="first" data-type="typeOne">
+
+                    <label>大类：</label>
+                    <a href="javscritp:void(0);" class="active"
+                       data_linkage="0">全部</a>
+
+                </div>
+                <div class="screen-down-col" data-type="typeTwo" id="second">
+                    <label>小类：</label>
+
+
+                    <a href="javscritp:;" class="active" data_linkage="0">全部</a>
+
+                </div>
+                <div class="m-option">
+                    <label>地区：</label>
+                    <select name="province"></select>
+                    <select name="city"></select>
+                    <select name="area"></select>
+                </div>
+                <div class="screen-down-btn">
+                    <a href="javascript:void(0);" id="btn-confirm">确定筛选</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="screen-cn">
+        <ul class="m-list">
+            <li>
+                <a href="">
+									<span>
+										<img with="285" height="178"
+                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+									</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="">
+									<span>
+										<img with="285" height="178"
+                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+									</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="">
+									<span>
+										<img with="285" height="178"
+                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+									</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="">
+									<span>
+										<img with="285" height="178"
+                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+									</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="">
+									<span>
+										<img with="285" height="178"
+                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+									</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="">
+									<span>
+										<img with="285" height="178"
+                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+									</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="">
+									<span>
+										<img with="285" height="178"
+                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+									</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="">
+									<span>
+										<img with="285" height="178"
+                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+									</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+
+
+        </ul>
+        <div class="page">
+
+        </div>
+    </div>
+</div>
+{%end%}
+{%block script%}
+<script src="js/main/jquery.citys.js"></script>
+<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script>
+    function getSlider() {
+        cla_sel_num = window.location.href.substring(38);
+        $('.m-classify li:eq(' + cla_sel_num + ')').addClass('on').children().addClass('active').parent().siblings().removeClass('on').children().removeClass('active');
+    }
+
+    function filterInfo() {
+        cla_ind = $('.m-classify li[class="on"]').index();
+        filter_cla = $('#first .active').text();
+        sub_filter = $('#second .active').text();
+        province =
+            $('.m-option select[name="province"]').find('option:selected').text();
+        city =
+            $('.m-option select[name="city"]').find('option:selected').text();
+        area =
+            $('.m-option select[name="area"]').find('option:selected').text();
+        if (area != ' -请选择- ') {
+            area_num =
+                $('.m-option select[name="area"]').find('option:selected').val();
+        }
+        else {
+            if (city != ' -请选择- ' && city != '') {
+                area_num =
+                    $('.m-option select[name="city"]').find('option:selected').val();
+            }
+            else {
+                if (province != ' -请选择- ') {
+                    area_num =
+                        $('.m-option select[name="province"]').find('option:selected').val();
+
+                }
+                else {
+                    area_num = '';
+                }
+            }
+        }
+        console.log({
+            cla_ind: cla_ind,
+            filter_cla: filter_cla,
+            sub_filter: sub_filter,
+            area_num: area_num
+        });
+
+        $.get('/api/qy/info', {
+                cla_ind: cla_ind,
+                filter_cla: filter_cla,
+                sub_filter: sub_filter,
+                area_num: area_num
+            },
+            function (data) {
+                console.log(data.ret);
+                $.each(data.ret, function (ind, val) {
+                    $('.m-list a:eq(' + String(ind) + ')').attr('href',
+                        val[0]).children('p').text(val[2]).prev().children().attr('src', val[1]);
+                });
+            });
+    }
+
+    getSlider();
+    if (remote_ip_info) {
+        $('.m-option').citys({
+            required: false,
+            nodata: 'disabled',
+            province: remote_ip_info['province'],
+            city: remote_ip_info['city']
+        }, function () {
+            filterInfo();
+            $('#search').append('<label>' + remote_ip_info['city'] + '<b> ×</b></label>');
+            $('#search label').click(function () {
+                $('.screen-down').hide();
+                $('.btn-screen').removeClass('on');
+                index = $(this).index();
+                console.log(index);
+                if ($('select[name="city"] option').length != 0) {
+                    if (index == 0) {
+                        $('.m-option').citys({
+                            required: false,
+                            nodata: 'disabled'
+                        }, function () {
+                            filterInfo();
+                        });
+                    }
+                    if (index == 1) {
+                        $('#search label:eq(2)').remove();
+                        $('.screen-down-col#first a:eq(0)').addClass('active').siblings().removeClass('active');
+                        $('.screen-down-col#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                        $('#second a:gt(0)').remove();
+                        filterInfo();
+                    }
+                    if (index == 2) {
+                        $('.screen-down-col#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                        filterInfo();
+                    }
+                }
+                else {
+                    if (index == 0) {
+                        $('#search label:eq(1)').remove();
+                        $('.screen-down-col#first a:eq(0)').addClass('active').siblings().removeClass('active');
+                        $('.screen-down-col#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                        $('#second a:gt(0)').remove();
+                    }
+                    if (index == 1) {
+                        $('.screen-down-col#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                    }
+                    filterInfo();
+                }
+            });
+        });
+    }
+    $(".main .dx-banner").slide({
+        mainCell: "ul",
+        titCell: "ol",
+        autoPage: true,
+        effect: "fold",
+        autoPlay: true,
+        prevCell: '.prev',
+        nextCell: '.next',
+    });
+    $('.main').slide({
+        titCell: '.m-menu li',
+        mainCell: '.m-block',
+        trigger: "click",
+        effect: 'fade',
+        prevCell: '.Pre',
+        nextCell: '.Nex',
+        startFun: function (i, c, s, t, m) {
+            t.children().eq(i).addClass('active').parent().siblings().children().removeClass('active');
+//            console.log(i);
+            if (i == 0 || i == 3 || i == 4) {
+                $('.main').next().show();
+
+            }
+            else {
+                $('.main').next().hide();
+            }
+
+            $('.screen-down').hide();
+            $('.btn-screen').removeClass('on');
+        },
+        endFun: function (i, c) {
+            if (i == 1) {
+                $.get('api/qy/info', {cla_ind: i}, function (data) {
+                    console.log(data.de_cla);
+                    $('.m-col-2').each(function (i) {
+                        $(this).children('span').text(data.de_cla[i][1]);
+                        $(this).find('img').attr('src', data.detail[i][0][1]).next().text(data.detail[i][0][2]);
+                        $(this).find('a').each(function (j) {
+                            $(this).attr('href', data.detail[i][j][0]);
+                            if (j > 0) {
+                                $(this).text(data.detail[i][j][2]);
+                            }
+                        });
+                    });
+                });
+            }
+            else if (i == 2) {
+                $.get('api/qy/info', {cla_ind: i}, function (data) {
+//                    console.log(data.de_cla);
+                    $('.brand-menu a').each(function (i) {
+                        $(this).text(data.de_cla[i][1]);
+                    });
+                    $('.brand-menu a').click(function () {
+                        $(this).addClass('active').siblings().removeClass('active');
+                        index = $(this).index();
+                        $.get('api/qy/info', {cla_ind: i}, function (data) {
+                            console.log(data.detail);
+                            $('.brand-lst a').each(function (j) {
+                                $(this).attr('href', data.detail[index][j][0]).children().attr('src',
+                                    data.detail[index][j][1]);
+                            });
+                        });
+                    });
+                    $('.brand-menu a:eq(0)').click();
+                });
+
+
+            }
+            else {
+                $('.screen-down-col#second a:gt(0)').remove();
+                $('.screen-down-col#first a:gt(0)').remove();
+                if ($('select[name="city"] option').length != 0 ||
+                    $('select[name="province"]').find('option:selected').val()) {
+                    $('#search label:gt(0)').remove();
+                }
+                else {
+                    $('#search label').remove();
+                }
+                $('.screen-down-col#first a:eq(0)').addClass('active');
+                $('.screen-down-col#second a:eq(0)').addClass('active');
+                $.get('/api/qy/info', {cla_ind: i}, function (data) {
+//                console.log(data.sliders);
+//                $('.screen-down-col#first a:gt(0)').remove();
+                    $.each(data.filter, function (ind, val) {
+                        $('.screen-down-col#first').append('<a href="javscritp:void(0);">' + val[0] + '</a>');
+                    });
+
+                    $.each(data.sliders, function (ind, val) {
+//                    console.log(ind, val);
+                        $('#banner' + String(i) + ' li a:eq(' + String(ind) + ')').attr('href',
+                            val[0]).children().attr('src', val[1]);
+                    });
+
+                    $('.screen-down-col#first a:gt(0)').click(function () {
+                        if (!$(this).hasClass('active')) {
+                            $('#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                            console.log($(this).text());
+                            $.get('/api/qy/info', {
+                                cla_ind: i, filter_cla: $(this).text()
+                            }, function (data) {
+//                        console.log(data.sub_filter);
+                                $('.screen-down-col#second a:gt(0)').remove();
+                                $.each(data.sub_filter, function (ind, val) {
+                                    $('.screen-down-col#second').append('<a href="javscritp:void(0);">' + val[0] + '</a>');
+                                });
+                            });
+                        }
+
+                    });
+                    filterInfo();
+                });
+            }
+
+
+        }
+    });
+
+    $(function () {
+
+        $('#btn-confirm').click(function () {
+            filterInfo();
+            $('.btn-screen').removeClass('on');
+            $('#search').empty();
+            fir_cla = $('#first .active').text();
+            sub_cla = $('#second .active').text();
+            province =
+                $('.m-option select[name="province"]').find('option:selected').text();
+            city =
+                $('.m-option select[name="city"]').find('option:selected').text();
+            area =
+                $('.m-option select[name="area"]').find('option:selected').text();
+            if (area != ' -请选择- ') {
+                $('#search').append('<label>' + area + '<b> ×</b></label>');
+
+            }
+            else {
+                if (city != ' -请选择- ' && city != '') {
+                    $('#search').append('<label>' + city + '<b> ×</b></label>');
+                }
+                else {
+                    if (province != ' -请选择- ') {
+                        $('#search').append('<label>' + province +
+                            '<b> ×</b></label>');
+                    }
+                }
+            }
+            if (fir_cla != '全部') {
+                $('#search').append('<label>' + fir_cla + '<b> ×</b></label>');
+
+            }
+            if (sub_cla != '全部') {
+                $('#search').append('<label>' + sub_cla + '<b> ×</b></label>');
+
+            }
+
+            $('#search label').click(function () {
+                $('.screen-down').hide();
+                $('.btn-screen').removeClass('on');
+                index = $(this).index();
+                console.log(index);
+                if ($('select[name="city"] option').length != 0 ||
+                    $('select[name="province"]').find('option:selected').val()) {
+                    if (index == 0) {
+//                        console.log('into10');
+                        $('.m-option').citys({
+                            required: false,
+                            nodata: 'disabled'
+                        }, function () {
+                            filterInfo();
+                        });
+                    }
+                    if (index == 1) {
+                        $('#search label:eq(2)').remove();
+                        $('.screen-down-col#first a:eq(0)').addClass('active').siblings().removeClass('active');
+                        $('.screen-down-col#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                        $('#second a:gt(0)').remove();
+                        filterInfo();
+                    }
+                    if (index == 2) {
+//                        console.log('in2');
+                        $('.screen-down-col#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                        filterInfo();
+                    }
+                }
+                else {
+                    if (index == 0) {
+                        $('#search label:eq(1)').remove();
+                        $('.screen-down-col#first a:eq(0)').addClass('active').siblings().removeClass('active');
+                        $('.screen-down-col#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                        $('#second a:gt(0)').remove();
+                    }
+                    if (index == 1) {
+                        $('.screen-down-col#second a:eq(0)').addClass('active').siblings().removeClass('active');
+                    }
+                    filterInfo();
+                }
+            });
+
+        });
+
+
+    });
+
+</script>
+
+{%end%}

@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="main">
+    <div class="m-top h-mid-topBg6">
+        <div class="tit">
+            <h2>{{cl[0][0]}}</h2>
+            <img src="img/home-tit-1.png"/>
+        </div>
+        <div class="m-menu">
+            <ul class="m-classify">
+                {%for s_c in sub_cl%}
+                <li>
+                    <a>{{s_c[0]}}</a>
+                </li>
+                {%end%}
+            </ul>
+        </div>
+        <div class="m-hot">
+            <span>微信号：890199&nbsp;&nbsp;</span>
+            <span>Email：1212989@qq.com（五湖四海）</span>
+        </div>
+    </div>
+    <div class="m-block">
+        <div class="m-details">
+            <h1>{{details[0][0]}}</h1>
+            <div class="text">
+                {% raw details[0][1] %}
+            </div>
+        </div>
+    </div>
+</div>
+{%end%}
+{%block script%}
+<script>
+    function getInfo(ind) {
+        $.ajax({
+            url: '/intoClass6-' + String(ind),
+            type: 'POST',
+            data: JSON.stringify({'sub_id': ind}),
+            dataType: 'json',
+            contentType: 'application/json',
+            headers: {
+                "X-CSRFTOKEN": getCookie("_xsrf")
+            },
+            success: function (data) {
+                $('.m-details h1').text(data.details[0][0]).next().html(data.details[0][1]);
+
+            }
+        });
+    }
+    $('.m-classify a').click(function () {
+        $(this).addClass('active').parent().siblings().children().removeClass('active');
+        getInfo($(this).parent().index());
+    });
+    ind = window.location.href.substring(36);
+    $('.m-classify a:eq(' + ind + ')').click();
+
+</script>
+
+{%end%}
+

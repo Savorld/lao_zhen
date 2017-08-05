@@ -1,0 +1,179 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="main">
+    <div class="m-top h-mid-topBg{{cid}}">
+        <div class="tit">
+            <h2>{{cla_name[0]}}</h2>
+            <img src="{{static_url("img/home-tit-1.png")}}"/>
+        </div>
+        <div class="m-menu"></div>
+    </div>
+    <div class="m-block">
+        <div class="e-left">
+            <div class="tit">星河之声</div>
+            <ul class="lst">
+                {%for e_l in e_left%}
+                <li>
+                    <a href="{{e_l[0]}}">{{e_l[1]}}</a>
+                </li>
+                {%end%}
+            </ul>
+        </div>
+        <div class="e-mid">
+            <div class="e-banner">
+                <ul>
+                    {%for e_s in e_slider%}
+                    <li>
+                        <a href="{{e_s[0]}}">
+                            <img src="{{e_s[1]}}"/>
+                            <p>{{e_s[2]}}</p>
+                        </a>
+                    </li>
+                    {%end%}
+                </ul>
+                <ol class="banner-focus">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+        </div>
+        <div class="e-right">
+            <div class="tit">星河之声</div>
+            <div class="lst">
+                {%for e_r in e_right%}
+                <a href="{{e_r[0]}}">
+                    <img src="{{e_r[1]}}"/>
+                    <p>{{e_r[2]}}</p>
+                </a>
+                {%end%}
+            </div>
+        </div>
+    </div>
+    <div class="m-block">
+        <div class="e-mc">
+            <div class="e-mc-img">
+                <a href="">
+                    <img src="img/pic/e-ad1.jpg"/>
+                </a>
+            </div>
+            <div class="e-mc-tab">
+                <ul>
+                    <li class="active">全部</li>
+                    {%for e_c in e_classes%}
+                    <li>{{e_c[0]}}</li>
+                    {%end%}
+                </ul>
+            </div>
+            <div class="e-mc-tabItems">
+                <div class="item" style="display: block;">
+                    <a href="{{e_all[0][0]}}">
+                        <img src="{{e_all[0][1]}}"/>
+                    </a>
+                    <div class="e-lst">
+                        {%for e_a in e_all[1:11]%}
+                        <p>
+                            <a href="{{e_a[0]}}">{{e_a[2]}}</a>
+                        </p>
+                        {%end%}
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="{{e_sub0[0][0]}}">
+                        <img src="{{e_sub0[0][1]}}"/>
+                    </a>
+                    <div class="e-lst">
+                        {%for e_s0 in e_sub0[1:]%}
+                        <p>
+                            <a href="{{e_s0[0]}}">{{e_s0[2]}}</a>
+                        </p>
+                        {%end%}
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="{{e_sub1[0][0]}}">
+                        <img src="{{e_sub1[0][1]}}"/>
+                    </a>
+                    <div class="e-lst">
+                        {%for e_s1 in e_sub1[1:]%}
+                        <p>
+                            <a href="{{e_s1[0]}}">{{e_s1[2]}}</a>
+                        </p>
+                        {%end%}
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="{{e_sub2[0][0]}}">
+                        <img src="{{e_sub2[0][1]}}"/>
+                    </a>
+                    <div class="e-lst">
+                        {%for e_s2 in e_sub2[1:]%}
+                        <p>
+                            <a href="{{e_s2[0]}}">{{e_s2[2]}}</a>
+                        </p>
+                        {%end%}
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="{{e_sub3[0][0]}}">
+                        <img src="{{e_sub3[0][1]}}"/>
+                    </a>
+                    <div class="e-lst">
+                        {%for e_s3 in e_sub3[1:]%}
+                        <p>
+                            <a href="{{e_s3[0]}}">{{e_s3[2]}}</a>
+                        </p>
+                        {%end%}
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="{{e_sub4[0][0]}}">
+                        <img src="{{e_sub4[0][1]}}"/>
+                    </a>
+                    <div class="e-lst">
+                        {%for e_s4 in e_sub4[1:]%}
+                        <p>
+                            <a href="{{e_s4[0]}}">{{e_s4[2]}}</a>
+                        </p>
+                        {%end%}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="e-sb">
+            <div class="e-sb-img">
+                <a href="{{e_lowRight[0][0]}}">
+                    <img src="{{e_lowRight[0][1]}}"/>
+                </a>
+            </div>
+            <div class="e-sb-cn">
+                <h2></h2>
+                <div class="e-lst">
+                    {%for e_lr in e_lowRight[1:]%}
+                    <p>
+                        <a href="{{e_lr[0]}}">{{e_lr[2]}}</a>
+                    </p>
+                    {%end%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%end%}
+
+{%block script%}
+<script>
+    $(".e-banner").slide({
+        mainCell: "ul",
+        titCell: "ol",
+        autoPage: true,
+        effect: "fold",
+        autoPlay: true
+    });
+    $('.e-mc-tab ul').tabBox({
+        type: 'hover',
+        tabBox: '.e-mc-tabItems > .item'
+    });
+</script>
+{%end%}
+

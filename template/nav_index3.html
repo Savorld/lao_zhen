@@ -1,0 +1,209 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="main">
+    <div class="m-top h-mid-topBg{{cid}}">
+        <div class="tit">
+            <h2>{{cla_name[0]}}</h2>
+            <img src="img/home-tit-1.png"/>
+        </div>
+        <div class="m-menu">
+            <ul class="m-classify">
+                {%for dx_c in dx_classes%}
+                <li>
+                    <a>{{dx_c[0]}}</a>
+                </li>
+                {%end%}
+            </ul>
+        </div>
+        <div class="m-hot">
+            <span>热门：</span>
+            {%for dx_h in dx_hots%}
+            <a href="{{dx_h[0]}}">{{dx_h[1]}}</a>
+            {%end%}
+        </div>
+    </div>
+    <div class="m-block">
+        <div class="dx-banner" id="banner">
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="img/pic/b1.jpg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/pic/b2.jpg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/pic/b3.jpg"/>
+                    </a>
+                </li>
+            </ul>
+            <ol class="banner-focus">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+    <div class="m-block">
+        <div id="dx-citys" class="m-option">
+            <p>
+                <select name="province"></select>
+                <select name="city"></select>
+                <select name="area"></select>
+                <span>共找到 198 条信息</span>
+
+            </p>
+        </div>
+        <ul class="m-list">
+            <li>
+                <a href="">
+								<span>
+									<img src="img/pic/1.jpg"/>
+								</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+								<span>
+									<img src="img/pic/2.jpg"/>
+								</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+								<span>
+									<img src="img/pic/3.jpg"/>
+								</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+								<span>
+									<img src="img/pic/4.jpg"/>
+								</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+								<span>
+									<img src="img/pic/3.jpg"/>
+								</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+								<span>
+									<img src="img/pic/4.jpg"/>
+								</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+								<span>
+									<img src="img/pic/1.jpg"/>
+								</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+								<span>
+									<img src="img/pic/2.jpg"/>
+								</span>
+                    <p>粮油/干货/土特产/日杂</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{%end%}
+
+{%block script%}
+<script src="js/main/jquery.citys.js"></script>
+<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script>
+    function getLinks(area_num) {
+        cla_ind = $('.m-classify .active').parent().index();
+        $.get('/api/dx/info', {
+            cla_ind: cla_ind,
+            area_num: area_num
+        }, function (data) {
+//            console.log(data.links);
+//            console.log(data.count);
+            $('.m-list a').each(function (i) {
+                $(this).attr('href', data.links[i][0]).children('p').text(data.links[i][2]).prev().children().attr('src', data.links[i][1]);
+                $('.m-option span').text('共找到' + data.count + '条信息');
+            });
+        });
+    }
+    function class_click(area_num) {
+        $('.m-classify a').click(function () {
+            $(this).addClass('active').parent().siblings().children().removeClass('active');
+            ind = $(this).parent().index();
+//            console.log(ind);
+            $.get('api/dx/info', {cla_ind: ind}, function (data) {
+//                console.log(data.slider);
+                $('#banner a').each(function (i) {
+                    $(this).attr('href', data.slider[i][0]).children().attr('src', data.slider[i][1]);
+                });
+            });
+            getLinks(area_num);
+        });
+    }
+    $("#banner").slide({
+        mainCell: "ul",
+        titCell: "ol",
+        autoPage: true,
+        effect: "fold",
+        autoPlay: true
+    });
+    if (remote_ip_info) {
+        $('#dx-citys').citys({
+            required: false,
+            nodata: 'disabled',
+            province: remote_ip_info['province'],
+            city: remote_ip_info['city'],
+            area: remote_ip_info['district'],
+            onChange: function (info) {
+                console.log(info.code);
+                getLinks(info.code);
+                class_click(info.code);
+
+            }
+        }, function (api) {
+            info = api.getInfo();
+            console.log(info.code);
+            getLinks(info.code);
+            class_click(info.code);
+        });
+    }
+
+    $(function () {
+        $('.m-classify a').click(function () {
+            $(this).addClass('active').parent().siblings().children().removeClass('active');
+            ind = $(this).parent().index();
+//            console.log(ind);
+            $.get('api/dx/info', {cla_ind: ind}, function (data) {
+//                console.log(data.slider);
+                $('#banner a').each(function (i) {
+                    $(this).attr('href', data.slider[i][0]).children().attr('src', data.slider[i][1]);
+                });
+            });
+        });
+        cla_sel_num = window.location.href.substring(36);
+        $('.m-classify a:eq(' + cla_sel_num + ')').click();
+
+    });
+</script>
+{%end%}
+
