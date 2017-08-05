@@ -121,8 +121,8 @@ class IntoClassHandler(BaseHandler):
                     e_right=e_right, e_lowRight=e_lowRight, e_all=e_all,
                     e_sub0=e_sub0, e_sub1=e_sub1, e_sub2=e_sub2,
                     e_sub3=e_sub3, e_sub4=e_sub4, e_classes=e_classes)
-    # @asynchronous
-    # @gen.coroutine
+    @asynchronous
+    @gen.coroutine
     def post(self, cid, sub_cla_id):
         sub_id = self.json_args.get('sub_id', '')
         if cid == '6':
