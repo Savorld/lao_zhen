@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import os
-from UIModules.Modules import  FooterModule
+from UIModules.Modules import  *
 
 log_level = 'debug'
 log_file = os.path.join(os.path.dirname(__file__), 'logs', 'log')
@@ -12,26 +12,30 @@ settings = {
     'cookie_secret': "kb8LwR4MSASQzT+HWLqy4YWnN1DJcEKJrjblnr77uSw=",
     'xsrf_cookies': True,
     'debug': True,
-    'ui_modules': {'Footer': FooterModule}
+    'ui_modules': dict(Footer=FooterModule, SubCla=SubClassModule)
     # 'compiled_template_cache': False,
     # 'autoescape': None,
     # 'login_url': '/login',
 }
 
-# mysql_options = dict(
-#     host = '',
-#     database = '',
-#     user = '',
-#     password = ''
+
+
+# pg_options = dict(
+#     database = 'laozhen',
+#     user = 'dbuser',
+#     password = 'wyc123',
+#     host = '122.114.131.81',
+#     port = 5432
 # )
 
 pg_options = dict(
     database = 'laozhen',
-    user = 'dbuser',
+    user = 'postgres',
     password = 'wyc123',
-    host = '122.114.131.81',
+    host = 'localhost',
     port = 5432
 )
+
 
 redis_options = dict(
     host = '',

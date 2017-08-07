@@ -2,15 +2,12 @@
 {%block content%}
 <div class="main">
     <div class="m-top h-mid-topBg{{cid}}">
-        <div class="tit">
-            <h2>{{cla_name[0]}}</h2>
-            <img src="img/home-tit-1.png"/>
-        </div>
+        {% module SubCla(cla_name) %}
         <div class="m-menu">
             <ul class="m-classify star-nav">
                 {%for s_ind, s_cl in enumerate(sub_cla)%}
                 <li>
-                    <a href="/intoClass0-{{s_ind}}">{{s_cl[0]}}</a>
+                    <a href="/intoClass0-{{s_ind}}">{{s_cl['c_name']}}</a>
                 </li>
                 {%end%}
             </ul>
@@ -18,7 +15,7 @@
         <div class="m-hot">
             <span>热门：</span>
             {%for h in hot%}
-            <a href="">{{h[0]}}</a>
+            <a href="">{{h['d_desc']}}</a>
             {%end%}
         </div>
     </div>
@@ -29,8 +26,8 @@
                 <div class="nav-index0-b{{i}}">
                     {%for d in details[9*ind:9*ind+9]%}
                     <li>
-                        <a href="{{d[1]}}">
-                            <img src="{{d[0]}}"/>
+                        <a href="{{d['d_url']}}">
+                            <img src="{{d['d_img']}}"/>
                         </a>
                     </li>
                     {%end%}

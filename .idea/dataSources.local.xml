@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="laozhen@122.114.131.81" uuid="22dd0609-eca1-4275-9beb-179c184498c1">
+      <database-info product="PostgreSQL" version="9.6.3" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4.1212">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>dbuser</user-name>
+      <resolve-scope>postgres:dbuser,public</resolve-scope>
+    </data-source>
+    <data-source name="laozhen@localhost" uuid="26fe9c9a-58d7-4bf4-bd4e-c5ce2d56c661">
+      <database-info product="PostgreSQL" version="9.6.3" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4.1212">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <resolve-scope>laozhen:postgres,public</resolve-scope>
+    </data-source>
+    <data-source name="mydb@192.168.221.131" uuid="a51aaa09-c1d5-4339-a040-a139257589e8">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+      <user-name>postgres</user-name>
+    </data-source>
+  </component>
+</project>
