@@ -2,15 +2,12 @@
 {%block content%}
 <div class="main">
     <div class="m-top h-mid-topBg{{cid}}">
-        <div class="tit">
-            <h2>{{cla_name[0]}}</h2>
-            <img src="img/home-tit-1.png"/>
-        </div>
+        {% module SubCla(cla_name) %}
         <div class="m-menu">
             <ul class="m-classify">
                 {%for q_c in qy_classes%}
                 <li>
-                    <a>{{q_c[0]}}</a>
+                    <a>{{q_c['c_name']}}</a>
                 </li>
                 {%end%}
             </ul>
@@ -18,7 +15,7 @@
         <div class="m-hot">
             <span>热门：</span>
             {%for q_h in qy_hots%}
-            <a href="{{q_h[0]}}">{{q_h[1]}}</a>
+            <a href="{{q_h['h_url']}}">{{q_h['h_desc']}}</a>
             {%end%}
         </div>
     </div>
@@ -27,12 +24,12 @@
             <ul>
                 <li>
                     <a href="http://www.baidu.com">
-                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121601178.jpg"/>
+                        <img src=""/>
                     </a>
                 </li>
                 <li>
                     <a href="http://www.baidu.com">
-                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121513457.jpg"/>
+                        <img src=""/>
                     </a>
                 </li>
             </ul>
@@ -97,46 +94,46 @@
                 <ul>
                     <li>
                         <a href="http://www.baidu.com">
-                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110324268.jpg"/>
+                            <img src=""/>
                         </a>
                     </li>
 
                     <li>
                         <a href="http://www.baidu.com">
-                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110308911.jpg"/>
+                            <img src=""/>
                         </a>
                     </li>
 
                     <li>
                         <a href="http://www.baidu.com">
-                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110249484.jpg"/>
+                            <img src=""/>
                         </a>
                     </li>
 
                     <li>
                         <a href="http://www.baidu.com">
-                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110227217.jpg"/>
+                            <img src=""/>
                         </a>
                     </li>
 
                     <li>
                         <a href="http://www.baidu.com">
-                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110201172.jpg"/>
+                            <img src=""/>
                         </a>
                     </li>
                     <li>
                         <a href="http://www.baidu.com">
-                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110201172.jpg"/>
+                            <img src=""/>
                         </a>
                     </li>
                     <li>
                         <a href="http://www.baidu.com">
-                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110201172.jpg"/>
+                            <img src=""/>
                         </a>
                     </li>
-                                        <li>
+                    <li>
                         <a href="http://www.baidu.com">
-                            <img src="http://www.lz.dev/uploadfile/2017/0614/20170614110201172.jpg"/>
+                            <img src=""/>
                         </a>
                     </li>
                 </ul>
@@ -146,12 +143,12 @@
             <ul>
                 <li>
                     <a href="http://www.baidu.com">
-                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121601178.jpg"/>
+                        <img src=""/>
                     </a>
                 </li>
                 <li>
                     <a href="http://www.baidu.com">
-                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121513457.jpg"/>
+                        <img src=""/>
                     </a>
                 </li>
             </ul>
@@ -166,12 +163,12 @@
             <ul>
                 <li>
                     <a href="http://www.baidu.com">
-                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121601178.jpg"/>
+                        <img src=""/>
                     </a>
                 </li>
                 <li>
                     <a href="http://www.baidu.com">
-                        <img src="http://www.lz.dev/uploadfile/2017/0614/20170614121513457.jpg"/>
+                        <img src=""/>
                     </a>
                 </li>
             </ul>
@@ -227,7 +224,7 @@
                 <a href="">
 									<span>
 										<img with="285" height="178"
-                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+                                             src=""/>
 									</span>
                     <p>粮油/干货/土特产/日杂</p>
                 </a>
@@ -238,7 +235,7 @@
                 <a href="">
 									<span>
 										<img with="285" height="178"
-                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+                                             src=""/>
 									</span>
                     <p>粮油/干货/土特产/日杂</p>
                 </a>
@@ -249,7 +246,7 @@
                 <a href="">
 									<span>
 										<img with="285" height="178"
-                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+                                             src=""/>
 									</span>
                     <p>粮油/干货/土特产/日杂</p>
                 </a>
@@ -260,7 +257,7 @@
                 <a href="">
 									<span>
 										<img with="285" height="178"
-                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+                                             src=""/>
 									</span>
                     <p>粮油/干货/土特产/日杂</p>
                 </a>
@@ -271,7 +268,7 @@
                 <a href="">
 									<span>
 										<img with="285" height="178"
-                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+                                             src=""/>
 									</span>
                     <p>粮油/干货/土特产/日杂</p>
                 </a>
@@ -282,7 +279,7 @@
                 <a href="">
 									<span>
 										<img with="285" height="178"
-                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+                                             src=""/>
 									</span>
                     <p>粮油/干货/土特产/日杂</p>
                 </a>
@@ -293,7 +290,7 @@
                 <a href="">
 									<span>
 										<img with="285" height="178"
-                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+                                             src=""/>
 									</span>
                     <p>粮油/干货/土特产/日杂</p>
                 </a>
@@ -304,7 +301,7 @@
                 <a href="">
 									<span>
 										<img with="285" height="178"
-                                             src="http://www.lz.dev/uploadfile/2017/0621/20170621095216433.jpg"/>
+                                             src=""/>
 									</span>
                     <p>粮油/干货/土特产/日杂</p>
                 </a>
@@ -357,12 +354,12 @@
                 }
             }
         }
-        console.log({
-            cla_ind: cla_ind,
-            filter_cla: filter_cla,
-            sub_filter: sub_filter,
-            area_num: area_num
-        });
+//        console.log({
+//            cla_ind: cla_ind,
+//            filter_cla: filter_cla,
+//            sub_filter: sub_filter,
+//            area_num: area_num
+//        });
 
         $.get('/api/qy/info', {
                 cla_ind: cla_ind,
@@ -371,11 +368,14 @@
                 area_num: area_num
             },
             function (data) {
-                console.log(data.ret);
-                $.each(data.ret, function (ind, val) {
-                    $('.m-list a:eq(' + String(ind) + ')').attr('href',
-                        val[0]).children('p').text(val[2]).prev().children().attr('src', val[1]);
-                });
+//                console.log(data.ret);
+                if (data.ret) {
+                    $.each(data.ret, function (ind, val) {
+                        $('.m-list a:eq(' + String(ind) + ')').attr('href',
+                            val.l_url).children('p').text(val.l_desc).prev().children().attr('src', val.l_img);
+                    });
+
+                }
             });
     }
 
@@ -393,7 +393,7 @@
                 $('.screen-down').hide();
                 $('.btn-screen').removeClass('on');
                 index = $(this).index();
-                console.log(index);
+//                console.log(index);
                 if ($('select[name="city"] option').length != 0) {
                     if (index == 0) {
                         $('.m-option').citys({
@@ -463,14 +463,15 @@
         endFun: function (i, c) {
             if (i == 1) {
                 $.get('api/qy/info', {cla_ind: i}, function (data) {
-                    console.log(data.de_cla);
+//                    console.log(data.detail);
                     $('.m-col-2').each(function (i) {
-                        $(this).children('span').text(data.de_cla[i][1]);
-                        $(this).find('img').attr('src', data.detail[i][0][1]).next().text(data.detail[i][0][2]);
+                        $(this).children('span').text(data.de_cla[i].nfc_name);
+                        $(this).find('img').attr('src',
+                            data.detail[i][0].nfl_img).next().text(data.detail[i][0].nfl_desc);
                         $(this).find('a').each(function (j) {
-                            $(this).attr('href', data.detail[i][j][0]);
+                            $(this).attr('href', data.detail[i][j].nfl_url);
                             if (j > 0) {
-                                $(this).text(data.detail[i][j][2]);
+                                $(this).text(data.detail[i][j].nfl_desc);
                             }
                         });
                     });
@@ -480,16 +481,17 @@
                 $.get('api/qy/info', {cla_ind: i}, function (data) {
 //                    console.log(data.de_cla);
                     $('.brand-menu a').each(function (i) {
-                        $(this).text(data.de_cla[i][1]);
+                        $(this).text(data.de_cla[i].nfc_name);
                     });
                     $('.brand-menu a').click(function () {
                         $(this).addClass('active').siblings().removeClass('active');
                         index = $(this).index();
                         $.get('api/qy/info', {cla_ind: i}, function (data) {
-                            console.log(data.detail);
+//                            console.log(data.detail);
                             $('.brand-lst a').each(function (j) {
-                                $(this).attr('href', data.detail[index][j][0]).children().attr('src',
-                                    data.detail[index][j][1]);
+                                $(this).attr('href',
+                                    data.detail[index][j].nfl_url).children().attr('src',
+                                    data.detail[index][j].nfl_img);
                             });
                         });
                     });
@@ -514,26 +516,26 @@
 //                console.log(data.sliders);
 //                $('.screen-down-col#first a:gt(0)').remove();
                     $.each(data.filter, function (ind, val) {
-                        $('.screen-down-col#first').append('<a href="javscritp:void(0);">' + val[0] + '</a>');
+                        $('.screen-down-col#first').append('<a href="javscritp:void(0);">' + val.fc_name + '</a>');
                     });
 
                     $.each(data.sliders, function (ind, val) {
 //                    console.log(ind, val);
                         $('#banner' + String(i) + ' li a:eq(' + String(ind) + ')').attr('href',
-                            val[0]).children().attr('src', val[1]);
+                            val.s_url).children().attr('src', val.s_img);
                     });
 
                     $('.screen-down-col#first a:gt(0)').click(function () {
                         if (!$(this).hasClass('active')) {
                             $('#second a:eq(0)').addClass('active').siblings().removeClass('active');
-                            console.log($(this).text());
+//                            console.log($(this).text());
                             $.get('/api/qy/info', {
                                 cla_ind: i, filter_cla: $(this).text()
                             }, function (data) {
 //                        console.log(data.sub_filter);
                                 $('.screen-down-col#second a:gt(0)').remove();
                                 $.each(data.sub_filter, function (ind, val) {
-                                    $('.screen-down-col#second').append('<a href="javscritp:void(0);">' + val[0] + '</a>');
+                                    $('.screen-down-col#second').append('<a href="javscritp:void(0);">' + val.sf_name + '</a>');
                                 });
                             });
                         }
@@ -589,7 +591,7 @@
                 $('.screen-down').hide();
                 $('.btn-screen').removeClass('on');
                 index = $(this).index();
-                console.log(index);
+//                console.log(index);
                 if ($('select[name="city"] option').length != 0 ||
                     $('select[name="province"]').find('option:selected').val()) {
                     if (index == 0) {

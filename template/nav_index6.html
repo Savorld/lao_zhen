@@ -3,14 +3,14 @@
 <div class="main">
     <div class="m-top h-mid-topBg6">
         <div class="tit">
-            <h2>{{cl[0][0]}}</h2>
+            <h2>{{cl[0]['c_name']}}</h2>
             <img src="img/home-tit-1.png"/>
         </div>
         <div class="m-menu">
             <ul class="m-classify">
                 {%for s_c in sub_cl%}
                 <li>
-                    <a>{{s_c[0]}}</a>
+                    <a>{{s_c['c_name']}}</a>
                 </li>
                 {%end%}
             </ul>
@@ -22,9 +22,9 @@
     </div>
     <div class="m-block">
         <div class="m-details">
-            <h1>{{details[0][0]}}</h1>
+            <h1>{{details[0]['d_tit']}}</h1>
             <div class="text">
-                {% raw details[0][1] %}
+                {% raw details[0]['d_con'] %}
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
                 "X-CSRFTOKEN": getCookie("_xsrf")
             },
             success: function (data) {
-                $('.m-details h1').text(data.details[0][0]).next().html(data.details[0][1]);
+                $('.m-details h1').text(data.details[0].d_tit).next().html(data.details[0].d_con);
 
             }
         });

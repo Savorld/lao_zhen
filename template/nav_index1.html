@@ -2,10 +2,7 @@
 {%block content%}
 <div class="main">
     <div class="m-top h-mid-topBg{{cid}}">
-        <div class="tit">
-            <h2>{{cla_name[0]}}</h2>
-            <img src="img/home-tit-1.png"/>
-        </div>
+        {% module SubCla(cla_name) %}
         <div class="m-menu">
             <ul class="m-city">
                 <li class="m-cityOne">
@@ -472,40 +469,42 @@
                 "X-XSRFTOKEN": getCookie("_xsrf")
             },
             success: function (data) {
+                console.log(data.main_info.mi_12);
                 $.each(data.main_info.mi_11, function (ind, val) {
                     $('.banner img:eq(' + String(ind) + ')').attr('src',
-                        val[1]);
+                        val.mi_img);
                     $('.banner a:eq(' + String(ind) + ')').attr('href',
-                        val[0]);
+                        val.mi_url);
                 });
 
                 $.each(data.main_info.mi_12, function (ind, val) {
-                    $('.lst a:eq(' + String(ind) + ')').attr('href', val[0]).text(val[1]);
+                    $('.lst a:eq(' + String(ind) + ')').attr('href',
+                        val.mi_url).text(val.mi_desc);
                 });
 
                 $.each(data.main_info.mi_211, function (ind, val) {
                     $('.item:first li a:eq(' + String(ind) + ')').attr('href',
-                        val[0]).text(val[1]);
+                        val.mi_url).text(val.mi_desc);
                 });
 
                 $.each(data.main_info.mi_221, function (ind, val) {
                     $('.item:last li a:eq(' + String(ind) + ')').attr('href',
-                        val[0]).text(val[1]);
+                        val.mi_url).text(val.mi_desc);
                 });
 
                 $.each(data.main_info.mi_212, function (ind, val) {
                     $('.item:first .m-tab-hot a:eq(' + String(ind) + ')').attr('href',
-                        val[0]).children().eq(0).attr('src', val[2]).parent().children().eq(1).text(val[1]);
+                        val.mi_url).children().eq(0).attr('src', val.mi_img).parent().children().eq(1).text(val.mi_desc);
                 });
 
                 $.each(data.main_info.mi_222, function (ind, val) {
                     $('.item:last .m-tab-hot a:eq(' + String(ind) + ')').attr('href',
-                        val[0]).children().eq(0).attr('src', val[2]).parent().children().eq(1).text(val[1]);
+                        val.mi_url).children().eq(0).attr('src', val.mi_img).parent().children().eq(1).text(val.mi_desc);
                 });
 
                 $.each(data.main_info.mi_3, function (ind, val) {
                     $('.m-block > .m-list a:eq(' + String(ind) + ')').attr('href',
-                        val[0]).children().eq(1).text(val[1]).parent().children().eq(0).children().attr('src', val[2]);
+                        val.mi_url).children().eq(1).text(val.mi_desc).parent().children().eq(0).children().attr('src', val.mi_img);
                 });
             }
         });
@@ -533,10 +532,11 @@
             (data) {
 //            alert(data.d_info);
             $.each(data.d_names, function (ind, val) {
-                $('.m-mc-type ul a:eq(' + String(ind) + ')').text(val[0]);
+                $('.m-mc-type ul a:eq(' + String(ind) + ')').text(val.dc_name);
             });
             $.each(data.d_info, function (ind, val) {
-                $('.m-mc-lst a:eq(' + String(ind) + ')').attr('href', val[1]).children('p').text(val[2]).siblings().children().attr('src', val[0]);
+                $('.m-mc-lst a:eq(' + String(ind) + ')').attr('href',
+                    val.al_url).children('p').text(val.al_desc).siblings().children().attr('src', val.al_img);
             });
         });
 

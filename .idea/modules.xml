@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../ihome/Tornado_Project_v1.1/.idea/Tornado_Project_v1.1.iml" filepath="$PROJECT_DIR$/../ihome/Tornado_Project_v1.1/.idea/Tornado_Project_v1.1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../ericworld/.idea/ericworld.iml" filepath="$PROJECT_DIR$/../ericworld/.idea/ericworld.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/lao_zhen.iml" filepath="$PROJECT_DIR$/.idea/lao_zhen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../xyzmain/.idea/xyzmain.iml" filepath="$PROJECT_DIR$/../xyzmain/.idea/xyzmain.iml" />
     </modules>
   </component>
 </project>
