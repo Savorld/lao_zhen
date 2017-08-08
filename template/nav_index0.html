@@ -15,7 +15,7 @@
         <div class="m-hot">
             <span>热门：</span>
             {%for h in hot%}
-            <a href="">{{h['d_desc']}}</a>
+            <a href="{{h['d_url']}}" target="_blank">{{h['d_desc']}}</a>
             {%end%}
         </div>
     </div>
@@ -26,7 +26,7 @@
                 <div class="nav-index0-b{{i}}">
                     {%for d in details[9*ind:9*ind+9]%}
                     <li>
-                        <a href="{{d['d_url']}}">
+                        <a href="{{d['d_url']}}" target="_blank">
                             <img src="{{d['d_img']}}"/>
                         </a>
                     </li>
@@ -68,7 +68,7 @@
                 </div>
             </form>
             <div class="sh-mail">
-                <a href="">
+                <a href="http://www.hao123.com/mail">
                     邮箱登录
                 </a>
             </div>

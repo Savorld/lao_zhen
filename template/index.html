@@ -1,6 +1,5 @@
 {%extends 'base.html'%}
 {%block content%}
-
 {%for i, cla in enumerate(data['classes'])%}
 <div class="home-mid">
     <div class="h-mid-top h-mid-topBg{{i}}">
@@ -34,21 +33,21 @@
             {%elif i==2%}
             <span class="hot-slide">
                             {%for qy_h in qy_hots%}
-                            <a href="{{qy_h['h_url']}}">
+                            <a href="{{qy_h['h_url']}}" target="_blank">
                                 {{qy_h['h_desc']}}</a>
                             {%end%}
                         </span>
             {%elif i==3%}
             <span class="hot-slide">
                             {%for dx_h in dx_hots%}
-                            <a href="{{dx_h['h_url']}}">
+                            <a href="{{dx_h['h_url']}}" target="_blank">
                                 {{dx_h['h_desc']}}</a>
                             {%end%}
                         </span>
             {%else%}
             <span class="hot-slide">
                 {%for e_h in e_hots%}
-                <a href="{{e_h['h_url']}}">{{e_h['h_desc']}}</a>
+                <a href="{{e_h['h_url']}}" target="_blank">{{e_h['h_desc']}}</a>
                 {%end%}
             </span>
             {%end%}
@@ -122,7 +121,7 @@
                     </div>
                 </form>
                 <div class="sh-mail">
-                    <a href="">
+                    <a href="http://www.hao123.com/mail" target="_blank">
                         邮箱登录
                     </a>
                 </div>
@@ -134,7 +133,7 @@
                 <ul>
                     {%for m_s in mid_sli[i-1]%}
                     <li>
-                        <a href="{{m_s['is_url']}}">
+                        <a href="{{m_s['is_url']}}" target="_blank">
                             <img src="{{m_s['is_img']}}"/>
                         </a>
                     </li>
@@ -151,7 +150,7 @@
             <ul class="brand">
                 {%for r_s in right_sli[i-1]%}
                 <li>
-                    <a href="{{r_s['is_url']}}">
+                    <a href="{{r_s['is_url']}}" target="_blank">
                         <img src="{{r_s['is_img']}}"/>
                     </a>
                 </li>

@@ -1,18 +1,16 @@
 # -*- coding:utf-8 -*-
 
 from tornado.web import UIModule
+from handlers.BaseHandler import BaseHandler
 from tornado import gen
 from utils.DB import Pg_db
 import config
 
 class FooterModule(UIModule):
 
-    # TODO:coroutine
-    def render(self):
-        pg = Pg_db()
-        footer_cla = pg.query('select c_name from js_classes where '
-                                   'c_level=2')
-        return self.render_string('modules/footer.html', footer_cla=footer_cla)
+    def render(self, footer_cla):
+        return self.render_string('modules/footer.html',
+                                       footer_cla=footer_cla)
 class SubClassModule(UIModule):
 
     def render(self, cla_name):
