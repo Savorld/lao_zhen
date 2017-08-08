@@ -11,7 +11,7 @@
             <ul class="lst">
                 {%for e_l in e_left%}
                 <li>
-                    <a href="{{e_l['l_url']}}">{{e_l['l_desc']}}</a>
+                    <a href="{{e_l['l_url']}}" target='_blank'>{{e_l['l_desc']}}</a>
                 </li>
                 {%end%}
             </ul>
@@ -21,7 +21,7 @@
                 <ul>
                     {%for e_s in e_slider%}
                     <li>
-                        <a href="{{e_s['s_url']}}">
+                        <a href="{{e_s['s_url']}}" target='_blank'>
                             <img src="{{e_s['s_img']}}"/>
                             <p>{{e_s['s_desc']}}</p>
                         </a>
@@ -39,7 +39,7 @@
             <div class="tit">星河之声</div>
             <div class="lst">
                 {%for e_r in e_right%}
-                <a href="{{e_r['r_url']}}">
+                <a href="{{e_r['r_url']}}" target='_blank'>
                     <img src="{{e_r['r_img']}}"/>
                     <p>{{e_r['r_desc']}}</p>
                 </a>
@@ -50,7 +50,7 @@
     <div class="m-block">
         <div class="e-mc">
             <div class="e-mc-img">
-                <a href="">
+                <a href="" target='_blank'>
                     <img src=""/>
                 </a>
             </div>
@@ -64,73 +64,73 @@
             </div>
             <div class="e-mc-tabItems">
                 <div class="item" style="display: block;">
-                    <a href="{{e_all[0]['l_url']}}">
+                    <a href="{{e_all[0]['l_url']}}" target='_blank'>
                         <img src="{{e_all[0]['l_img']}}"/>
                     </a>
                     <div class="e-lst">
                         {%for e_a in e_all[1:11]%}
                         <p>
-                            <a href="{{e_a['l_url']}}">{{e_a['l_desc']}}</a>
+                            <a href="{{e_a['l_url']}}" target='_blank'>{{e_a['l_desc']}}</a>
                         </p>
                         {%end%}
                     </div>
                 </div>
                 <div class="item">
-                    <a href="{{e_sub0[0]['l_url']}}">
+                    <a href="{{e_sub0[0]['l_url']}}" target='_blank'>
                         <img src="{{e_sub0[0]['l_img']}}"/>
                     </a>
                     <div class="e-lst">
                         {%for e_s0 in e_sub0[1:]%}
                         <p>
-                            <a href="{{e_s0['l_url']}}">{{e_s0['l_desc']}}</a>
+                            <a href="{{e_s0['l_url']}}" target='_blank'>{{e_s0['l_desc']}}</a>
                         </p>
                         {%end%}
                     </div>
                 </div>
                 <div class="item">
-                    <a href="{{e_sub1[0]['l_url']}}">
+                    <a href="{{e_sub1[0]['l_url']}}" target='_blank'>
                         <img src="{{e_sub1[0]['l_img']}}"/>
                     </a>
                     <div class="e-lst">
                         {%for e_s1 in e_sub1[1:]%}
                         <p>
-                            <a href="{{e_s1['l_url']}}">{{e_s1['l_desc']}}</a>
+                            <a href="{{e_s1['l_url']}}" target='_blank'>{{e_s1['l_desc']}}</a>
                         </p>
                         {%end%}
                     </div>
                 </div>
                 <div class="item">
-                    <a href="{{e_sub2[0]['l_url']}}">
+                    <a href="{{e_sub2[0]['l_url']}}" target='_blank'>
                         <img src="{{e_sub2[0]['l_img']}}"/>
                     </a>
                     <div class="e-lst">
                         {%for e_s2 in e_sub2[1:]%}
                         <p>
-                            <a href="{{e_s2['l_url']}}">{{e_s2['l_desc']}}</a>
+                            <a href="{{e_s2['l_url']}}" target='_blank'>{{e_s2['l_desc']}}</a>
                         </p>
                         {%end%}
                     </div>
                 </div>
                 <div class="item">
-                    <a href="{{e_sub3[0]['l_url']}}">
+                    <a href="{{e_sub3[0]['l_url']}}" target='_blank'>
                         <img src="{{e_sub3[0]['l_img']}}"/>
                     </a>
                     <div class="e-lst">
                         {%for e_s3 in e_sub3[1:]%}
                         <p>
-                            <a href="{{e_s3['l_url']}}">{{e_s3['l_desc']}}</a>
+                            <a href="{{e_s3['l_url']}}" target='_blank'>{{e_s3['l_desc']}}</a>
                         </p>
                         {%end%}
                     </div>
                 </div>
                 <div class="item">
-                    <a href="{{e_sub4[0]['l_url']}}">
+                    <a href="{{e_sub4[0]['l_url']}}" target='_blank'>
                         <img src="{{e_sub4[0]['l_img']}}"/>
                     </a>
                     <div class="e-lst">
                         {%for e_s4 in e_sub4[1:]%}
                         <p>
-                            <a href="{{e_s4['l_url']}}">{{e_s4['l_desc']}}</a>
+                            <a href="{{e_s4['l_url']}}" target='_blank'>{{e_s4['l_desc']}}</a>
                         </p>
                         {%end%}
                     </div>
@@ -139,7 +139,7 @@
         </div>
         <div class="e-sb">
             <div class="e-sb-img">
-                <a href="{{e_lowRight[0]['lr_url']}}">
+                <a href="{{e_lowRight[0]['lr_url']}}" target='_blank'>
                     <img src="{{e_lowRight[0]['lr_img']}}"/>
                 </a>
             </div>
@@ -148,7 +148,7 @@
                 <div class="e-lst">
                     {%for e_lr in e_lowRight[1:]%}
                     <p>
-                        <a href="{{e_lr['lr_url']}}">{{e_lr['lr_desc']}}</a>
+                        <a href="{{e_lr['lr_url']}}" target='_blank'>{{e_lr['lr_desc']}}</a>
                     </p>
                     {%end%}
                 </div>

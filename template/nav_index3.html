@@ -15,7 +15,7 @@
         <div class="m-hot">
             <span>热门：</span>
             {%for dx_h in dx_hots%}
-            <a href="{{dx_h['h_url']}}">{{dx_h['h_desc']}}</a>
+            <a href="{{dx_h['h_url']}}" target='_blank'>{{dx_h['h_desc']}}</a>
             {%end%}
         </div>
     </div>
@@ -23,17 +23,17 @@
         <div class="dx-banner" id="banner">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="" target='_blank'>
                         <img src=""/>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="" target='_blank'>
                         <img src=""/>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="" target='_blank'>
                         <img src=""/>
                     </a>
                 </li>
@@ -57,7 +57,7 @@
         </div>
         <ul class="m-list">
             <li>
-                <a href="">
+                <a href="" target='_blank'>
 								<span>
 									<img src="img/pic/1.jpg"/>
 								</span>
@@ -65,7 +65,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="" target='_blank'>
 								<span>
 									<img src="img/pic/2.jpg"/>
 								</span>
@@ -73,7 +73,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="" target='_blank'>
 								<span>
 									<img src="img/pic/3.jpg"/>
 								</span>
@@ -81,7 +81,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="" target='_blank'>
 								<span>
 									<img src="img/pic/4.jpg"/>
 								</span>
@@ -89,7 +89,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="" target='_blank'>
 								<span>
 									<img src="img/pic/3.jpg"/>
 								</span>
@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="" target='_blank'>
 								<span>
 									<img src="img/pic/4.jpg"/>
 								</span>
@@ -105,7 +105,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="" target='_blank'>
 								<span>
 									<img src="img/pic/1.jpg"/>
 								</span>
@@ -113,7 +113,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="" target='_blank'>
 								<span>
 									<img src="img/pic/2.jpg"/>
 								</span>
@@ -146,7 +146,7 @@
 //            console.log(data.count);
             $('.m-list a').each(function (i) {
                 $(this).attr('href', data.links[i].l_url).children('p').text(data.links[i].l_desc).prev().children().attr('src', data.links[i].l_img);
-                $('.m-option span').text('共找到' + data.count[0].count + '条信息');
+                $('.m-option span').text('共找到' + data.count + '条信息');
             });
         });
     }

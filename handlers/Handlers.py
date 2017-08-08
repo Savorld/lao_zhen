@@ -2,7 +2,6 @@
 
 from BaseHandler import BaseHandler
 from tornado import gen
-from tornado.web import asynchronous
 import json
 import logging
 from pprint import pprint
@@ -15,6 +14,8 @@ class Indexhandler(BaseHandler):
         classes_1 = yield self.query('select  c_id, c_name from '
                                      'lz_classes '
                                      'where c_level=1;')
+        footer_cla = yield self.query('select c_name from js_classes where '
+                                      'c_level=2')
         nav_hots = []
         for c in classes_1:
             cid = c['c_id']
@@ -62,10 +63,10 @@ class Indexhandler(BaseHandler):
                                      'and is_pos=2', (i,))
             right_sliders.append(r_sli)
 
-        self.render('index.html', data=data, slides=slides,
-                    nav_hots=nav_hots, shq_hots=shq_hots, qy_hots=qy_hots,
-                    mid_sli=mid_sliders, right_sli=right_sliders,
-                    dx_hots=dx_hots, e_hots=e_hots)
+        self.render('index.html', footer_cla=footer_cla, data=data,
+                    slides=slides, nav_hots=nav_hots, shq_hots=shq_hots,
+                    qy_hots=qy_hots, mid_sli=mid_sliders,
+                    right_sli=right_sliders, dx_hots=dx_hots, e_hots=e_hots)
 
 
 class IntoClassHandler(BaseHandler):
@@ -73,10 +74,12 @@ class IntoClassHandler(BaseHandler):
     def get(self, cid, sub_cla_id):
         cla_name = yield self.query('select c_name from lz_classes where '
                                     'c_id=%s+1;', (cid,))
+        footer_cla = yield self.query('select c_name from js_classes where '
+                                      'c_level=2')
         if cid == '0':
             hot = yield self.query(
-                'select d_desc from lz_details where d_class_id=%s+6 and '
-                'd_hot_order is not null ORDER by d_hot_order desc',
+                'select d_url, d_desc from lz_details where d_class_id=%s+6 '
+                'and d_hot_order is not null ORDER by d_hot_order desc',
                 (sub_cla_id,))
             sub_cla = yield self.query('select c_name from lz_classes where '
                                        'c_level=2 and c_pid=%s+1;', (cid,))
@@ -85,22 +88,26 @@ class IntoClassHandler(BaseHandler):
                                        'd_class_id=c_id where d_class_id=%s+6;',
                                        (sub_cla_id,))
             self.render('nav_index0.html', cid=cid, cla_name=cla_name[0],
+                        footer_cla=footer_cla,
                         hot=hot, sub_cla=sub_cla, details=details)
         if cid == '1':
-            self.render('nav_index1.html', cid=cid, cla_name=cla_name[0])
+            self.render('nav_index1.html', cid=cid, cla_name=cla_name[0],
+                        footer_cla=footer_cla,)
         if cid == '2':
             qy_hots = yield self.query(
                 'select h_url, h_desc from qy_hots order by '
                 'h_order desc;')
             qy_classes = yield self.query('select c_name from lz_classes where '
                                           'c_pid=3')
-            self.render('nav_index%s.html' % cid, cid=cid, cla_name=cla_name[0],
+            self.render('nav_index2.html', cid=cid, cla_name=cla_name[0],
+                        footer_cla=footer_cla,
                         qy_hots=qy_hots, qy_classes=qy_classes)
         if cid == '3':
             dx_hots = yield self.query('select h_url, h_desc from dx_hots')
             dx_classes = yield self.query('select c_name from lz_classes where '
                                           'c_pid=4')
-            self.render('nav_index%s.html' % cid, cid=cid, cla_name=cla_name[0],
+            self.render('nav_index3.html', cid=cid, cla_name=cla_name[0],
+                        footer_cla=footer_cla,
                         dx_hots=dx_hots, dx_classes=dx_classes)
         if cid == '4':
             e_classes = yield self.query(
@@ -128,7 +135,8 @@ class IntoClassHandler(BaseHandler):
             e_sub4 = yield self.query(
                 'select l_url, l_img, l_desc from e_links '
                 'where l_pclassid=43')
-            self.render('nav_index%s.html' % cid, cid=cid, cla_name=cla_name[0],
+            self.render('nav_index4.html', cid=cid, cla_name=cla_name[0],
+                        footer_cla=footer_cla,
                         e_left=e_left, e_slider=e_slider,
                         e_right=e_right, e_lowRight=e_lowRight, e_all=e_all,
                         e_sub0=e_sub0, e_sub1=e_sub1, e_sub2=e_sub2,
@@ -141,7 +149,7 @@ class IntoClassHandler(BaseHandler):
             details = yield self.query(
                 'select d_tit, d_con from js_details where '
                 'd_pclassid=%s+2;', (sub_cla_id,))
-            self.render('nav_index6.html', cl=cl,
+            self.render('nav_index6.html', cl=cl,footer_cla=footer_cla,
                         sub_cl=sub_cl, details=details)
 
     @gen.coroutine
@@ -342,13 +350,14 @@ class QyInfoHandler(BaseHandler):
 
 class DxInfoHandler(BaseHandler):
     # '导学详细信息获取'
+
     @gen.coroutine
     def get(self):
         cla_ind = self.get_argument('cla_ind', '')
         area_num = self.get_argument('area_num', '')
         sql = 'select l_url, l_img, l_desc from dx_links where ' \
               'l_pclassid=%s+31'
-        count = 'select count(*) from dx_links where l_pclassid=%s+31'
+        count = 'select count(*) from dx_links where l _pclassid=%s+31'
         args = [cla_ind, area_num, area_num]
         # print 'args=', args
         if not area_num:
@@ -370,7 +379,8 @@ class DxInfoHandler(BaseHandler):
             count += ' and l_areanum=%s'
             args.pop()
         links = yield self.query(sql, tuple(args))
-        count = yield self.query(count, tuple(args))
+        count = len(links)
+        # print 'count=', count
         # print 'sql ====', sql
         # print 'args ====', tuple(args)
         # print 'ret ====', links
