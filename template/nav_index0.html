@@ -68,7 +68,7 @@
                 </div>
             </form>
             <div class="sh-mail">
-                <a href="http://www.hao123.com/mail">
+                <a href="http://www.hao123.com/mail" target="_blank">
                     邮箱登录
                 </a>
             </div>
@@ -115,7 +115,7 @@
                 $("label[for='hs']").show();
                 $("label[for='gd']").hide();
                 $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
-             }
+            }
 
             if (search_1 == 2) {
                 $("label[for='yd']").hide();
@@ -130,8 +130,7 @@
         $('.sh-btn input').click(function () {
             event.preventDefault();
             search_1 = $('.sh-classify a').index($('.sh-classify .active'));
-            search_2 =
-                $('.sh-type input').index($('.sh-type input').filter('[checked="checked"]'));
+            search_2 = $('.sh-type input:checked').parent().index();
             key_word = $('.sh-text input').val();
             if (search_1 == 0) {
                 if (search_2 == 0) {
@@ -162,6 +161,7 @@
                     window.open('http://ditu.amap.com/search?query=' + key_word);
                 }
             }
-        });    })
+        });
+    })
 </script>
 {%end%}

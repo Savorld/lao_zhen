@@ -2,8 +2,15 @@
 
 from DB import Pg_db
 from datas import city, pre_areas
+from tornado.ioloop import IOLoop
+from tornado import gen
+from psycopg2.extras import RealDictCursor
+
 import random
 import logging
+import config
+import momoko
+import datetime
 
 
 # with open('../static/img1/brank/nature0.jpg', 'rb') as f:
@@ -11,6 +18,53 @@ import logging
 #     for i in range(4, 27):
 #         with open('../static/img1/brank/nature'+str(i)+'.jpg', 'wb') as f1:
 #             f1.write(cont)
+
+class x_DB(object):
+    def __init__(self):
+        self.ioloop = IOLoop.instance()
+        dsn = 'dbname={database} user={user} password={password} host={host} ' \
+              'port={port}'.format(
+            **config.pg_options)
+        self.db = momoko.Pool(
+            dsn=dsn,
+            cursor_factory=RealDictCursor,
+            size=1,
+            max_size=36,
+            ioloop=self.ioloop,
+            setsession=("SET TIME ZONE PRC",),
+            raise_connect_errors=True,
+            auto_shrink=True,
+            shrink_delay=datetime.timedelta(seconds=10),
+            shrink_period=datetime.timedelta(seconds=10)
+        )
+        future = self.db.connect()
+        self.ioloop.add_future(future, lambda f: self.ioloop.stop())
+        self.ioloop.start()
+        future.result()
+
+    @gen.coroutine
+    def query(self, sql, *args):
+        ret = []
+        # print 'sql=', sql
+        # print 'args=', args
+        try:
+            if args:
+                cursor = yield self.db.execute(sql, *args)
+            else:
+                cursor = yield self.db.execute(sql, None)
+            _fetch = cursor.fetchall()
+            # _fetch = map(lambda x: tuple(x.values()), fetch)
+            # print '_fetch=', _fetch
+            if _fetch:
+                ret = _fetch
+        except Exception as e:
+            logging.error(e)
+        finally:
+            raise gen.Return(ret)
+
+    @gen.coroutine
+    def insert(self, sql, args):
+        pass
 
 def lz_details():
     p = Pg_db()
@@ -110,9 +164,11 @@ def shq_mainInfo():
                 sql = 'insert into shq_mainInfo(mi_img, mi_url, mi_desc, mi_city, mi_pos) ' \
                       'VALUES (%s, %s, ' \
                       '%s, %s, %s);'
-                for i in range(8):
+                for i in range(26):
                     args = (
-                        'img/living_pic/m/' + k + '-' + str(i) + '.jpg',
+                        'img/living_pic/m/' + k + '-' + str(
+                            i) + '.jpg' if i < 8 else 'img/living_pic/m/' + k
+                                                      + '-7.jpg',
                         'http://bj.58.com/',
                         v + '生活资讯' + str(i),
                         v,
@@ -159,9 +215,13 @@ def shq_detailClass():
             )
             pg.insert(sql, args)
 
-
+@gen.coroutine
 def shq_arealinks():
     pg = Pg_db()
+    # db = x_DB()
+    # sub_f = yield db.query('select sf_id, sf_name from qy_subfilter')
+    # print sub_f
+    # return
     p_cla = [
         '客店',
         '食界',
@@ -236,7 +296,7 @@ def shq_arealinks():
             for d_id, d_c in enumerate(d_cla):
                 if p_c not in d_c:
                     continue
-                for i in range(6):
+                for i in range(9):
                     args = (
                         'img/living_pic/dp/' + str(
                             random.randint(1, 4)) + '.jpg',
@@ -575,7 +635,7 @@ if __name__ == '__main__':
     # shq_hotCitys()
     # shq_mainInfo()
     # shq_detailClass()
-    # shq_arealinks()
+    shq_arealinks()
     # qy_hots()
     # lz_indexslider()
     # qy_slider()
@@ -594,4 +654,4 @@ if __name__ == '__main__':
     # e_lowRight()
     # e_links()
     # js_classes()
-    js_details()
+    # js_details()
