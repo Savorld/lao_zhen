@@ -213,14 +213,12 @@
         $('.m-classify a').click(function () {
             $(this).addClass('active').parent().siblings().children().removeClass('active');
             ind = $(this).parent().index();
-//            console.log(ind);
             $.get('/api/dx/info', {cla_ind: ind}, function (data) {
 //                console.log(data.slider);
                 $('.dx-banner a').each(function (i) {
                     $(this).attr('href', data.slider[i].s_url).children().attr('src', data.slider[i].s_img);
                 });
             });
-//            console.log('out');
             getLinks(area_num);
         });
     }

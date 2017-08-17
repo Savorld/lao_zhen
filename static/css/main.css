@@ -528,7 +528,7 @@ body {
 }
 
 .sh-mail {
-    margin-top: 20px;
+    margin-top: 61px;
     width: 237px;
     height: 36px;
     border: 3px solid #009944;
@@ -542,6 +542,32 @@ body {
     color: #009944;
     background: url(../img/icon-mail.png) 10px center no-repeat;
 }
+
+.sh-mail>.dropdown-menu>li>a {
+    display: block;
+    padding-left: 50px;
+    line-height: 15px;
+    color: #009944;
+    background: url(../img/icon-mail.png) 10px center no-repeat;
+}
+
+.sh-mail button {
+    display: block;
+    padding: 0 20px 0 0;
+    width:217px;
+    line-height: 36px;
+    color: #009944;
+    background: url(../img/icon-mail.png) 10px center no-repeat;
+    border: 0;
+}
+
+.dropdown-menu{
+    left:35px;
+}
+
+/*.dropdown-menu li:hover {*/
+    /*color: #000;*/
+/*}*/
 
 .h-mid-menuThree {
     background: #333;
@@ -1747,4 +1773,8 @@ body {
 
 .e-banner .banner-focus {
     text-align: right;
+}
+
+.pagination>li>a {
+    cursor: pointer;
 }
