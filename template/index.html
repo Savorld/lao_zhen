@@ -1,6 +1,23 @@
 {%extends 'base.html'%}
 {%block content%}
 {%for i, cla in enumerate(data['classes'])%}
+<style>
+    .input-group {
+        margin-top: -18px;
+    }
+
+    .input-group .form-control {
+        height: 10px;
+        padding: 6px 0;
+    }
+
+    .input-group-btn > .btn {
+        height: 10px;
+        line-height: 10px;
+
+    }
+
+</style>
 <div class="home-mid">
     <div class="h-mid-top h-mid-topBg{{i}}">
         <a href="/intoClass{{i}}-0">
@@ -76,14 +93,28 @@
         {%if i==0%}
         <div class="middle" id="brand-roll">
             <div class="brand-roll">
-                {%for sli in slides%}
+                {%for ind, sli in enumerate(slides)%}
                 <ul class="brand-roll-lst">
                     {%for item in sli%}
                     <li>
                         <a href="{{item['d_url']}}" target="_Blank">
                             <img src="{{item['d_img']}}"/>
+                            {%if ind==1%}
+                            <div class="input-group" style="display: none;">
+                                <input type="text" class="form-control"
+                                       placeholder="">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"
+                                          aria-hidden="true"></span>
+                                </button>
+                                </span>
+                            </div>
+                            {%end%}
                         </a>
+
                     </li>
+
                     {%end%}
                 </ul>
                 {%end%}
@@ -120,11 +151,37 @@
                         <input type="submit" name="" id="" value="搜索"/>
                     </div>
                 </form>
-                <div class="sh-mail">
-                    <a href="http://www.hao123.com/mail" target="_blank">
-                        邮箱登录
-                    </a>
+                <!--<div class="sh-mail">-->
+                <!--<a href="http://www.hao123.com/mail" target="_blank">-->
+                <!--邮箱登录-->
+                <!--</a>-->
+                <!--</div>-->
+
+                <!-- Single button -->
+                <div class="btn-group dropup sh-mail">
+                    <button type="button"
+                            class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        邮箱登录 <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">@163.com</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">@126.com</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">@129.com</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">@qq.com</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">@sohu.com</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">@189.cn</a></li>
+
+                    </ul>
                 </div>
+
+
             </div>
         </div>
         {%else%}
@@ -257,6 +314,30 @@
                 }
             }
         });
+        $('.input-group input, .input-group-btn').click(function (e) {
+            return false;
+        });
+        $('.brand-roll-lst a').hover(function () {
+            $(this).children().eq(1).show();
+        }, function () {
+            $(this).children().eq(1).hide();
+        });
+        $('.input-group-btn button').click(function () {
+            h = $(this).parent().parent().parent().attr('href');
+            query = $(this).parent().prev().val();
+            h_query = 'https://s.taobao.com/search?q=' + query;
+            window.open(h_query);
+
+        });
+        $('.form-control').keyup(function (e) {
+            if (e.keyCode == 13) {
+                console.log('il')
+                query = $(this).val();
+                h_query = 'https://s.taobao.com/search?q=' + query;
+                window.open(h_query);
+
+            }
+        })
     })
 
 </script>
