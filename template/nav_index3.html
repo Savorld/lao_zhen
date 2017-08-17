@@ -121,6 +121,9 @@
                 </a>
             </li>
         </ul>
+        <div style="text-align: center">
+            <ul id="paginator-dx"></ul>
+        </div>
     </div>
 </div>
 {%end%}
@@ -128,6 +131,7 @@
 {%block script%}
 <script src="js/main/jquery.citys.js"></script>
 <script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script src="js/common/bootstrap-paginator.min.js"></script>
 <script>
     $("#banner").slide({
         mainCell: "ul",
@@ -136,18 +140,73 @@
         effect: "fold",
         autoPlay: true
     });
-    function getLinks(area_num) {
+
+    function createPage(area_num, totle) {
+        $('#paginator-dx').bootstrapPaginator({
+            currentPage: 1,
+            totalPages: totle,
+            numberOfPages: 6,
+            itemTexts: function (type, page) {
+                switch (type) {
+                    case "first":
+                        return "首页";
+                    case "prev":
+                        return "上一页";
+                    case "next":
+                        return "下一页";
+                    case "last":
+                        return "末页";
+                    case "page":
+                        return page;
+                }
+            },
+            tooltipTitles: function (type, page) {
+                switch (type) {
+                    case "first":
+                        return "首页";
+                    case "prev":
+                        return "上一页";
+                    case "next":
+                        return "下一页";
+                    case "last":
+                        return "末页";
+                    case "page":
+                        return page;
+                }
+            },
+            onPageClicked: function (event, originalEvent, type, page) {
+                getLinks(area_num, page)
+            }
+        });
+    }
+
+    function getLinks(area_num, page) {
         cla_ind = $('.m-classify .active').parent().index();
         $.get('/api/dx/info', {
             cla_ind: cla_ind,
-            area_num: area_num
+            area_num: area_num,
+            page: page || 0
         }, function (data) {
 //            console.log(data.links);
-//            console.log(data.count);
-            $('.m-list a').each(function (i) {
-                $(this).attr('href', data.links[i].l_url).children('p').text(data.links[i].l_desc).prev().children().attr('src', data.links[i].l_img);
-                $('.m-option span').text('共找到' + data.count + '条信息');
-            });
+            console.log(data.count);
+            if (data.totle) {
+                $('.m-list a').each(function (i) {
+                    $(this).attr('href', data.links[i].l_url).children('p').text(data.links[i].l_desc).prev().children().attr('src', data.links[i].l_img);
+                    $('.m-option span').text('共找到' + data.count + '条信息');
+                });
+                createPage(area_num, data.totle)
+            }
+            else {
+                $('.m-list a').each(function (i) {
+                    if (i == 0) {
+                        $('.m-block > .m-list a').each(function () {
+                            $(this).removeAttr('href').children().eq(1).text('').parent().children().eq(0).children().attr('src', '');
+                        });
+                    }
+                    $(this).attr('href', data.links[i].l_url).children('p').text(data.links[i].l_desc).prev().children().attr('src', data.links[i].l_img);
+                });
+            }
+
         });
     }
     function class_click(area_num) {
@@ -156,7 +215,6 @@
             ind = $(this).parent().index();
 //            console.log(ind);
             $.get('/api/dx/info', {cla_ind: ind}, function (data) {
-//                console.log("into");
 //                console.log(data.slider);
                 $('.dx-banner a').each(function (i) {
                     $(this).attr('href', data.slider[i].s_url).children().attr('src', data.slider[i].s_img);
@@ -186,7 +244,14 @@
 //            console.log(info.code);
             getLinks(info.code);
             class_click(info.code);
-            $('.m-classify a:eq(0)').click();
+//            $('.m-classify a:eq(0)').click();
+            ind = $('.m-classify a:eq(0)').parent().index();
+            $.get('/api/dx/info', {cla_ind: ind}, function (data) {
+//                console.log(data.slider);
+                $('.dx-banner a').each(function (i) {
+                    $(this).attr('href', data.slider[i].s_url).children().attr('src', data.slider[i].s_img);
+                });
+            });
         });
     }
 </script>

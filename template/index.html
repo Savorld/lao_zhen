@@ -223,8 +223,9 @@
         $('.sh-btn input').click(function () {
             event.preventDefault();
             search_1 = $('.sh-classify a').index($('.sh-classify .active'));
-            search_2 =
-                $('.sh-type input').index($('.sh-type input').filter('[checked="checked"]'));
+//            search_2 =
+//                $('.sh-type input').index($('.sh-type input[checked="checked"]'));
+            search_2 = $('.sh-type input:checked').parent().index();
             key_word = $('.sh-text input').val();
             if (search_1 == 0) {
                 if (search_2 == 0) {

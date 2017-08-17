@@ -2,9 +2,9 @@
 
 from BaseHandler import BaseHandler
 from tornado import gen
-import json
+import math
 import logging
-from pprint import pprint
+import constants
 
 
 class Indexhandler(BaseHandler):
@@ -92,7 +92,7 @@ class IntoClassHandler(BaseHandler):
                         hot=hot, sub_cla=sub_cla, details=details)
         if cid == '1':
             self.render('nav_index1.html', cid=cid, cla_name=cla_name[0],
-                        footer_cla=footer_cla,)
+                        footer_cla=footer_cla, )
         if cid == '2':
             qy_hots = yield self.query(
                 'select h_url, h_desc from qy_hots order by '
@@ -149,7 +149,7 @@ class IntoClassHandler(BaseHandler):
             details = yield self.query(
                 'select d_tit, d_con from js_details where '
                 'd_pclassid=%s+2;', (sub_cla_id,))
-            self.render('nav_index6.html', cl=cl,footer_cla=footer_cla,
+            self.render('nav_index6.html', cl=cl, footer_cla=footer_cla,
                         sub_cl=sub_cl, details=details)
 
     @gen.coroutine
@@ -169,6 +169,7 @@ class ShqInfoHandler(BaseHandler):
         sel = self.get_argument('sel', '')
         area = self.get_argument('area', '')
         dc_ind = self.get_argument('dc_ind', '')
+        page = self.get_argument('page', '')
         # print sel, area, dc_ind,type(dc_ind)
         d_names = yield self.query(
             'select dc_name from shq_detailclass a LEFT JOIN lz_classes b on a.dc_pclass_id=b.c_id WHERE b.c_name=%s;',
@@ -177,89 +178,126 @@ class ShqInfoHandler(BaseHandler):
         dc_name = d_names[int(dc_ind)]['dc_name']
         # print dc_name
         if area[-2:] == '00':
-            d_info = yield self.query(
-                'SELECT al_img,al_url,al_desc FROM (shq_arealinks a LEFT JOIN '
-                'shq_detailclass '
-                'b ON a.al_declass_id = '
-                'b.dc_id) c LEFT JOIN lz_classes d ON '
-                'c.dc_pclass_id=d.c_id where c_name=%s and dc_name=%s and '
-                'al_areaid '
-                'BETWEEN %s and %s;',
-                (sel, dc_name, int(area), int(area) + 100))
-
+            sql = 'SELECT al_img,al_url,al_desc FROM (shq_arealinks a LEFT JOIN shq_detailclass b ON a.al_declass_id = b.dc_id) c LEFT JOIN lz_classes d ON c.dc_pclass_id=d.c_id where c_name=%s and dc_name=%s and al_areaid BETWEEN %s and %s limit %s'
+            args = [sel, dc_name, int(area), int(area) + 100,
+                    6]
+            if int(page):
+                sql += ' offset %s'
+                args.append((int(page) - 1) * 6)
+                d_info = yield self.query(sql, tuple(args))
+                self.write({'d_info': d_info})
+                self.finish()
+                return
+            totle = yield self.query('SELECT COUNT(*) FROM ('
+                                     'shq_arealinks a LEFT JOIN shq_detailclass b ON a.al_declass_id = b.dc_id) c LEFT JOIN lz_classes d ON c.dc_pclass_id=d.c_id where c_name=%s and dc_name=%s and al_areaid BETWEEN %s and %s',
+                                     (sel, dc_name, int(area),
+                                      int(area) + 100))
+            print sql, args
+            d_info = yield self.query(sql, tuple(args))
         elif not area:
-            d_info = None
             logging.error('no area args')
-
+            self.finish()
+            return
         else:
-            d_info = yield self.query(
-                'SELECT al_img,al_url,al_desc,dc_name FROM (shq_arealinks a '
-                'LEFT JOIN '
-                'shq_detailclass '
-                'b ON a.al_declass_id = '
-                'b.dc_id) c LEFT JOIN lz_classes d ON '
-                'c.dc_pclass_id=d.c_id where c_name=%s and al_areaid =%s and '
-                'dc_name=%s;',
+            sql = 'SELECT al_img,al_url,al_desc,dc_name FROM (shq_arealinks a LEFT JOIN shq_detailclass b ON a.al_declass_id = b.dc_id) c LEFT JOIN lz_classes d ON c.dc_pclass_id=d.c_id where c_name=%s and al_areaid =%s and dc_name=%s limit %s'
+            args = [sel, area, dc_name, 6]
+            if int(page):
+                sql += ' offset %s'
+                args.append((int(page) - 1) * 6)
+                print sql, args
+                d_info = yield self.query(sql, tuple(args))
+                self.write({'d_info': d_info})
+                self.finish()
+                return
+            totle = yield self.query(
+                'SELECT COUNT(*) FROM (shq_arealinks a LEFT JOIN shq_detailclass b ON a.al_declass_id = b.dc_id) c LEFT JOIN lz_classes d ON c.dc_pclass_id=d.c_id where c_name=%s and al_areaid =%s and dc_name=%s',
                 (sel, area, dc_name))
-
-        self.write({'d_names': d_names, 'd_info': d_info})
+            d_info = yield self.query(sql, tuple(args))
+        totle = math.ceil(float(totle[0]['count']) / 6)
+        self.write({'d_names': d_names, 'd_info': d_info, 'totle': totle})
 
     # '生活圈首页市级信息ajax接口'
     @gen.coroutine
     def post(self):
         city = self.json_args.get('city')
-        main_info_11 = yield self.query(
-            'select mi_url, mi_img from shq_maininfo where mi_city=%s and '
-            'mi_pos=11', (city,))
-        main_info_12 = yield self.query(
-            'select mi_url, mi_desc from shq_maininfo where mi_city=%s and '
-            'mi_pos=12', (city,)
-        )
-        main_info_211 = yield self.query(
-            'select mi_url, mi_desc from shq_maininfo where mi_city=%s and '
-            'mi_pos=211', (city,)
-        )
-        main_info_212 = yield self.query(
-            'select mi_url, mi_desc, mi_img from shq_maininfo where mi_city=%s '
-            'and '
-            'mi_pos=212', (city,)
-        )
-        main_info_221 = yield self.query(
-            'select mi_url, mi_desc from shq_maininfo where mi_city=%s and '
-            'mi_pos=221', (city,)
-        )
-        main_info_222 = yield self.query(
-            'select mi_url, mi_desc, mi_img from shq_maininfo where mi_city=%s '
-            'and '
-            'mi_pos=222', (city,)
-        )
-        main_info_3 = yield self.query(
-            'select mi_url, mi_desc, mi_img from shq_maininfo where mi_city=%s '
-            'and '
-            'mi_pos=3', (city,)
-        )
-        main_info = {
-            "mi_11": main_info_11,
-            "mi_12": main_info_12,
-            "mi_211": main_info_211,
-            "mi_212": main_info_212,
-            "mi_221": main_info_221,
-            "mi_222": main_info_222,
-            "mi_3": main_info_3
-        }
-        # print 'main_info',main_info
-        self.write({'main_info': main_info})
+        page = self.json_args.get('page')
+        # print 'args = ', city, page
+        if int(page):
+            main_info_3 = yield self.query(
+                'select mi_url, mi_desc, mi_img from shq_maininfo where mi_city=%s and mi_pos=3 limit %s offset %s',
+                (city, constants.PAGE_CAPACITY,
+                 (int(page) - 1) * constants.PAGE_CAPACITY))
+            main_info = {
+                "mi_3": main_info_3
+            }
+            # print 'main_info', main_info
+            # print "select mi_url, mi_desc, mi_img from shq_maininfo where " \
+            #       "mi_city=%s and mi_pos=3 limit %s offset %s" % (city,
+            #                                                       constants.PAGE_CAPACITY,
+            #                                                       (int(
+            #                                                           page) - 1) * constants.PAGE_CAPACITY)
+            self.write({'main_info': main_info})
+            self.finish()
+            return
+        else:
+            totle = yield self.query(
+                'select count(*) from shq_maininfo where mi_city=%s and mi_pos=3',
+                (city,))
+            main_info_11 = yield self.query(
+                'select mi_url, mi_img from shq_maininfo where mi_city=%s and '
+                'mi_pos=11', (city,))
+            main_info_12 = yield self.query(
+                'select mi_url, mi_desc from shq_maininfo where mi_city=%s and '
+                'mi_pos=12', (city,)
+            )
+            main_info_211 = yield self.query(
+                'select mi_url, mi_desc from shq_maininfo where mi_city=%s and '
+                'mi_pos=211', (city,)
+            )
+            main_info_212 = yield self.query(
+                'select mi_url, mi_desc, mi_img from shq_maininfo where mi_city=%s '
+                'and '
+                'mi_pos=212', (city,)
+            )
+            main_info_221 = yield self.query(
+                'select mi_url, mi_desc from shq_maininfo where mi_city=%s and '
+                'mi_pos=221', (city,)
+            )
+            main_info_222 = yield self.query(
+                'select mi_url, mi_desc, mi_img from shq_maininfo where mi_city=%s '
+                'and '
+                'mi_pos=222', (city,)
+            )
+            main_info_3 = yield self.query(
+                'select mi_url, mi_desc, mi_img from shq_maininfo where mi_city=%s '
+                'and mi_pos=3 limit %s', (city, constants.PAGE_CAPACITY)
+            )
+            main_info = {
+                "totle": math.ceil(float(totle[0][
+                                             'count']) / constants.PAGE_CAPACITY),
+                "mi_11": main_info_11,
+                "mi_12": main_info_12,
+                "mi_211": main_info_211,
+                "mi_212": main_info_212,
+                "mi_221": main_info_221,
+                "mi_222": main_info_222,
+                "mi_3": main_info_3
+            }
+            # print 'main_info', main_info
+            self.write({'main_info': main_info})
 
 
 class QyInfoHandler(BaseHandler):
     # '企业之友详细链接信息获取'
+    # TODO:query slow
     @gen.coroutine
     def get(self):
         cla_ind = self.get_argument('cla_ind', '')
         filter_cla = self.get_argument('filter_cla', '')
         sub_filter = self.get_argument('sub_filter', '')
         area_num = self.get_argument('area_num', '')
-        # print '-***-'.join([cla_ind, filter_cla, sub_filter, area_num])
+        page = self.get_argument('page', '')
+        print '-***-'.join([cla_ind, filter_cla, sub_filter, area_num, page])
         if int(cla_ind) in (0, 3, 4):
             if not filter_cla:
                 filter_cla = yield self.query(
@@ -270,6 +308,8 @@ class QyInfoHandler(BaseHandler):
                                            'qy_slider where s_classid=%s+26',
                                            (cla_ind,))
                 self.write({'filter': filter_cla, 'sliders': sliders})
+                self.finish()
+                return
             else:
                 if not sub_filter:
                     # print 'sub', filter_cla
@@ -279,6 +319,8 @@ class QyInfoHandler(BaseHandler):
                                                   '.sf_pclassid=b.fc_id where '
                                                   'fc_name=%s', (filter_cla,))
                     self.write({'sub_filter': sub_filter})
+                    self.finish()
+                    return
                 else:
                     sql = 'select l_url, l_img, l_desc from qy_links a'
                     args = []
@@ -324,12 +366,27 @@ class QyInfoHandler(BaseHandler):
                         sql += ' and a.l_areanum=%s'
                         args.append(area_num)
 
-                    sql += ' limit 8'
-                    # print 'sql ====', sql
-                    # print 'args ====', tuple(args)
+                    totle = yield self.query(
+                        sql.replace('l_url, l_img, l_desc', 'count(*)'),
+                        tuple(args))
+
+                    sql += ' limit %s'
+                    args.append(constants.PAGE_CAPACITY)
+                    if int(page):
+                        sql += ' offset %s'
+                        args.append((int(page) - 1) * constants.PAGE_CAPACITY)
+                        ret = yield self.query(sql, tuple(args))
+                        print 'ret ====', ret
+                        self.write({'ret': ret})
+                        self.finish()
+                        return
+                    totle = math.ceil(
+                        float(totle[0]['count']) / constants.PAGE_CAPACITY)
                     ret = yield self.query(sql, tuple(args))
-                    # print 'ret ====', ret
-                    self.write({'ret': ret})
+                    print 'sql ====', sql
+                    print 'args ====', tuple(args)
+                    print 'ret ====', ret
+                    self.write({'ret': ret, 'totle': totle})
 
         elif int(cla_ind) in (1, 2):
             de_cla = yield self.query('select nfc_id, nfc_name from '
@@ -355,9 +412,10 @@ class DxInfoHandler(BaseHandler):
     def get(self):
         cla_ind = self.get_argument('cla_ind', '')
         area_num = self.get_argument('area_num', '')
+        page = self.get_argument('page', '')
         sql = 'select l_url, l_img, l_desc from dx_links where ' \
               'l_pclassid=%s+31'
-        count = 'select count(*) from dx_links where l _pclassid=%s+31'
+        count_sql = 'select count(*) from dx_links where l_pclassid=%s+31'
         args = [cla_ind, area_num, area_num]
         # print 'args=', args
         if not area_num:
@@ -366,23 +424,35 @@ class DxInfoHandler(BaseHandler):
                 's_pclassid=%s+31', (cla_ind,))
             # print 'slider=', slider
             self.write({'slider': slider})
-            # return
             self.finish()
+            return
         elif area_num[-4:] == '0000':
             sql += ' and l_areanum between %s and %s + 10000'
-            count += ' and l_areanum between %s and %s + 10000'
+            count_sql += ' and l_areanum between %s and %s + 10000'
         elif area_num[-2:] == '00':
             sql += ' and l_areanum between %s and %s + 100'
-            count += ' and l_areanum between %s and %s + 100'
+            count_sql += ' and l_areanum between %s and %s + 100'
         else:
             sql += ' and l_areanum=%s'
-            count += ' and l_areanum=%s'
+            count_sql += ' and l_areanum=%s'
             args.pop()
+        count = yield self.query(
+            sql.replace('l_url, l_img, l_desc', 'count(*)'), tuple(args))
+        print 'count_sql=', count_sql
+        print 'args=', args
+        print 'count=', count
+        totle = math.ceil(float(count[0]['count'] / constants.PAGE_CAPACITY))
+        sql += ' limit %s' % constants.PAGE_CAPACITY
+        if int(page):
+            sql += ' offset %s'
+            args.append((int(page) - 1) * constants.PAGE_CAPACITY)
+            links = yield self.query(sql, tuple(args))
+            self.write({'links': links})
+            self.finish()
+            return
         links = yield self.query(sql, tuple(args))
-        count = len(links)
         # print 'count=', count
         # print 'sql ====', sql
         # print 'args ====', tuple(args)
         # print 'ret ====', links
-        # print '------------------------------'
-        self.write({'links': links, 'count': count})
+        self.write({'links': links, 'totle': totle, 'count': count[0]['count']})

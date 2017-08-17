@@ -181,7 +181,7 @@
         </div>
     </div>
 </div>
-<div class="m-block" style="display: none;">
+<div class="m-block">
     <div class="screen-box">
         <div class="screen-tag">
             为你找到
@@ -309,22 +309,65 @@
 
 
         </ul>
-        <div class="page">
 
-        </div>
+    </div>
+    <!--分页部分-->
+    <div style="text-align: center">
+        <ul id="pagebar"></ul>
     </div>
 </div>
 {%end%}
-{%block script%}
+{% block script %}
 <script src="js/main/jquery.citys.js"></script>
 <script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script src="js/common/bootstrap-paginator.min.js"></script>
 <script>
+
     function getSlider() {
         cla_sel_num = window.location.href.substring(38);
         $('.m-classify li:eq(' + cla_sel_num + ')').addClass('on').children().addClass('active').parent().siblings().removeClass('on').children().removeClass('active');
     }
 
-    function filterInfo() {
+    function createPage(totle) {
+        $('#pagebar').bootstrapPaginator({
+            currentPage: 1,
+            totalPages: totle,
+            numberOfPages: 6,
+            itemTexts: function (type, page) {
+                switch (type) {
+                    case "first":
+                        return "首页";
+                    case "prev":
+                        return "上一页";
+                    case "next":
+                        return "下一页";
+                    case "last":
+                        return "末页";
+                    case "page":
+                        return page;
+                }
+            },
+            tooltipTitles: function (type, page) {
+                switch (type) {
+                    case "first":
+                        return "首页";
+                    case "prev":
+                        return "上一页";
+                    case "next":
+                        return "下一页";
+                    case "last":
+                        return "末页";
+                    case "page":
+                        return page;
+                }
+            },
+            onPageClicked: function (event, originalEvent, type, page) {
+                filterInfo(page)
+            }
+        });
+    }
+
+    function filterInfo(page) {
         cla_ind = $('.m-classify li[class="on"]').index();
         filter_cla = $('#first .active').text();
         sub_filter = $('#second .active').text();
@@ -354,27 +397,40 @@
                 }
             }
         }
-//        console.log({
-//            cla_ind: cla_ind,
-//            filter_cla: filter_cla,
-//            sub_filter: sub_filter,
-//            area_num: area_num
-//        });
+        console.log({
+            cla_ind: cla_ind,
+            filter_cla: filter_cla,
+            sub_filter: sub_filter,
+            area_num: area_num,
+            page: page || 0
+        });
 
         $.get('/api/qy/info', {
                 cla_ind: cla_ind,
                 filter_cla: filter_cla,
                 sub_filter: sub_filter,
-                area_num: area_num
+                area_num: area_num,
+                page: page || 0
             },
             function (data) {
-//                console.log(data.ret);
-                if (data.ret) {
+                console.log(data.totle);
+                if (data.totle) {
                     $.each(data.ret, function (ind, val) {
                         $('.m-list a:eq(' + String(ind) + ')').attr('href',
                             val.l_url).children('p').text(val.l_desc).prev().children().attr('src', val.l_img);
                     });
-
+                    createPage(data.totle)
+                }
+                else {
+                    $.each(data.ret, function (ind, val) {
+                        if (ind == 0) {
+                            $('.screen-cn > .m-list a').each(function () {
+                                $(this).removeAttr('href').children().eq(1).text('').parent().children().eq(0).children().attr('src', '');
+                            });
+                        }
+                        $('.m-list a:eq(' + String(ind) + ')').attr('href',
+                            val.l_url).children('p').text(val.l_desc).prev().children().attr('src', val.l_img);
+                    });
                 }
             });
     }
@@ -393,7 +449,7 @@
                 $('.screen-down').hide();
                 $('.btn-screen').removeClass('on');
                 index = $(this).index();
-//                console.log(index);
+                //                console.log(index);
                 if ($('select[name="city"] option').length != 0) {
                     if (index == 0) {
                         $('.m-option').citys({
@@ -428,6 +484,7 @@
                     filterInfo();
                 }
             });
+
         });
     }
     $(".main .dx-banner").slide({
@@ -541,16 +598,14 @@
                         }
 
                     });
-                    filterInfo();
+//                    filterInfo();
                 });
             }
-
-
         }
     });
 
-    $(function () {
 
+    $(function () {
         $('#btn-confirm').click(function () {
             filterInfo();
             $('.btn-screen').removeClass('on');
@@ -631,8 +686,6 @@
             });
 
         });
-
-
     });
 
 </script>

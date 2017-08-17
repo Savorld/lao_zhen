@@ -1,5 +1,14 @@
 {%extends 'base.html'%}
 {%block content%}
+<style>
+    #paginator a {
+        cursor: pointer;
+    }
+
+    #paginator-mc a {
+        cursor: pointer;
+    }
+</style>
 <div class="main">
     <div class="m-top h-mid-topBg{{cid}}">
         {% module SubCla(cla_name) %}
@@ -129,7 +138,8 @@
                         <a href="" target='_blank'>简写属性把下边框的所有属性</a>
                     </li>
                     <li>
-                        <a href="" target='_blank'>写属性把下边框的所有属性设置到一个声明中置到一个声明</a>
+                        <a href=""
+                           target='_blank'>写属性把下边框的所有属性设置到一个声明中置到一个声明</a>
                     </li>
                     <li>
                         <a href="" target='_blank'>属性把下边框的所有声明中</a>
@@ -363,6 +373,9 @@
                     </li>
                 </ul>
             </div>
+            <div style="text-align:center;">
+                <ul id="paginator-mc"></ul>
+            </div>
         </div>
     </div>
     <div class="m-block">
@@ -433,6 +446,9 @@
             </li>
         </ul>
     </div>
+    <div style="text-align:center;">
+        <ul id="paginator"></ul>
+    </div>
     <div id='sh-citys-0' class="clearfix m-select" style="display: none;">
         <div class="m-select-city">
             <select name="province"></select>
@@ -445,6 +461,7 @@
 {%block script%}
 <script src="js/main/jquery.citys.js"></script>
 <script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script src="js/common/bootstrap-paginator.min.js"></script>
 <script>
     function getCookie(name) {
         var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
@@ -458,59 +475,127 @@
         return null;
     }
 
-    function getCityInfo(city) {
+    function createPage(obj, totle, flag) {
+        obj.bootstrapPaginator({
+            currentPage: 1,
+            totalPages: totle,
+            numberOfPages: 6,
+            itemTexts: function (type, page) {
+                switch (type) {
+                    case "first":
+                        return "首页";
+                    case "prev":
+                        return "上一页";
+                    case "next":
+                        return "下一页";
+                    case "last":
+                        return "末页";
+                    case "page":
+                        return page;
+                }
+            },
+            tooltipTitles: function (type, page) {
+                switch (type) {
+                    case "first":
+                        return "首页";
+                    case "prev":
+                        return "上一页";
+                    case "next":
+                        return "下一页";
+                    case "last":
+                        return "末页";
+                    case "page":
+                        return page;
+                }
+            },
+            onPageClicked: function (event, originalEvent, type, page) {
+                if (flag == 1) {
+                    getCityInfo($('#sh-citys select[name="city"]').find('option:selected').text(), page)
+                }
+                else {
+                    intoDetail(page)
+                }
+            }
+        });
+    }
+
+    function getCityInfo(city, page) {
         $.ajax({
             url: '/api/shq/info',
             type: 'POST',
-            data: JSON.stringify({'city': city}),
+            data: JSON.stringify({'city': city, 'page': page || 0}),
             contentType: 'application/json',
             dataType: 'json',
             headers: {
                 "X-XSRFTOKEN": getCookie("_xsrf")
             },
             success: function (data) {
-                console.log(data.main_info.mi_12);
-                $.each(data.main_info.mi_11, function (ind, val) {
-                    $('.banner img:eq(' + String(ind) + ')').attr('src',
-                        val.mi_img);
-                    $('.banner a:eq(' + String(ind) + ')').attr('href',
-                        val.mi_url);
-                });
+                if (data.main_info.totle) {
+                    console.log(data.main_info.mi_3);
+                    $.each(data.main_info.mi_11, function (ind, val) {
+                        $('.banner img:eq(' + String(ind) + ')').attr('src',
+                            val.mi_img);
+                        $('.banner a:eq(' + String(ind) + ')').attr('href',
+                            val.mi_url);
+                    });
 
-                $.each(data.main_info.mi_12, function (ind, val) {
-                    $('.lst a:eq(' + String(ind) + ')').attr('href',
-                        val.mi_url).text(val.mi_desc);
-                });
+                    $.each(data.main_info.mi_12, function (ind, val) {
+                        $('.lst a:eq(' + String(ind) + ')').attr('href',
+                            val.mi_url).text(val.mi_desc);
+                    });
 
-                $.each(data.main_info.mi_211, function (ind, val) {
-                    $('.item:first li a:eq(' + String(ind) + ')').attr('href',
-                        val.mi_url).text(val.mi_desc);
-                });
+                    $.each(data.main_info.mi_211, function (ind, val) {
+                        $('.item:first li a:eq(' + String(ind) + ')').attr('href',
+                            val.mi_url).text(val.mi_desc);
+                    });
 
-                $.each(data.main_info.mi_221, function (ind, val) {
-                    $('.item:last li a:eq(' + String(ind) + ')').attr('href',
-                        val.mi_url).text(val.mi_desc);
-                });
+                    $.each(data.main_info.mi_221, function (ind, val) {
+                        $('.item:last li a:eq(' + String(ind) + ')').attr('href',
+                            val.mi_url).text(val.mi_desc);
+                    });
 
-                $.each(data.main_info.mi_212, function (ind, val) {
-                    $('.item:first .m-tab-hot a:eq(' + String(ind) + ')').attr('href',
-                        val.mi_url).children().eq(0).attr('src', val.mi_img).parent().children().eq(1).text(val.mi_desc);
-                });
+                    $.each(data.main_info.mi_212, function (ind, val) {
+                        $('.item:first .m-tab-hot a:eq(' + String(ind) + ')').attr('href',
+                            val.mi_url).children().eq(0).attr('src', val.mi_img).parent().children().eq(1).text(val.mi_desc);
+                    });
 
-                $.each(data.main_info.mi_222, function (ind, val) {
-                    $('.item:last .m-tab-hot a:eq(' + String(ind) + ')').attr('href',
-                        val.mi_url).children().eq(0).attr('src', val.mi_img).parent().children().eq(1).text(val.mi_desc);
-                });
+                    $.each(data.main_info.mi_222, function (ind, val) {
+                        $('.item:last .m-tab-hot a:eq(' + String(ind) + ')').attr('href',
+                            val.mi_url).children().eq(0).attr('src', val.mi_img).parent().children().eq(1).text(val.mi_desc);
+                    });
+                    $.each(data.main_info.mi_3, function (ind, val) {
+                        if (ind == 0) {
+//                            console.log('into 0');
+                            $('.m-block > .m-list a').each(function () {
+                                $(this).removeAttr('href').children().eq(1).text('').parent().children().eq(0).children().attr('src', '')
+                            });
+                        }
+                        $('.m-block > .m-list a:eq(' + String(ind) + ')').attr('href',
+                            val.mi_url).children().eq(1).text(val.mi_desc).parent().children().eq(0).children().attr('src', val.mi_img);
 
-                $.each(data.main_info.mi_3, function (ind, val) {
-                    $('.m-block > .m-list a:eq(' + String(ind) + ')').attr('href',
-                        val.mi_url).children().eq(1).text(val.mi_desc).parent().children().eq(0).children().attr('src', val.mi_img);
-                });
+                    });
+                    createPage($('#paginator'), data.main_info.totle, 1);
+                }
+                else {
+                    $.each(data.main_info.mi_3, function (ind, val) {
+                        if (ind == 0) {
+//                            console.log('into 0');
+                            $('.m-block > .m-list a').each(function () {
+                                $(this).removeAttr('href').children().eq(1).text('').parent().children().eq(0).children().attr('src', '')
+                            });
+                        }
+                        $('.m-block > .m-list a:eq(' + String(ind) + ')').attr('href',
+                            val.mi_url).children().eq(1).text(val.mi_desc).parent().children().eq(0).children().attr('src', val.mi_img);
+
+                    });
+                }
+
+
             }
         });
     }
 
-    function intoDetail() {
+    function intoDetail(page) {
         $sel = $('.m-left-menuOne li[class="active"]');
         if ($('.m-left-menuOne li[class="active"]').length === 0) {
             $sel = $('.m-left-menuOne li:first');
@@ -524,23 +609,36 @@
         $('.m-block > .m-list').hide();
         $sel.addClass('active').siblings().removeClass('active');
         $('.m-mc-type span').text($sel.text());
-//        alert( $sel.text(), area_num, d_class_ind);
+        $('#paginator').parent().hide();
         $.get('/api/shq/info', {
             sel: $sel.text(), area: area_num,
-            dc_ind: d_class_ind
+            dc_ind: d_class_ind, page: page || 0
         }, function
             (data) {
-//            alert(data.d_info);
-            $.each(data.d_names, function (ind, val) {
-                $('.m-mc-type ul a:eq(' + String(ind) + ')').text(val.dc_name);
-            });
-            $.each(data.d_info, function (ind, val) {
-                $('.m-mc-lst a:eq(' + String(ind) + ')').attr('href',
-                    val.al_url).children('p').text(val.al_desc).siblings().children().attr('src', val.al_img);
-            });
+//            console.log(data.totle);
+            if (data.totle) {
+                $.each(data.d_names, function (ind, val) {
+                    $('.m-mc-type ul a:eq(' + String(ind) + ')').text(val.dc_name);
+                });
+                $.each(data.d_info, function (ind, val) {
+                    $('.m-mc-lst a:eq(' + String(ind) + ')').attr('href',
+                        val.al_url).children('p').text(val.al_desc).siblings().children().attr('src', val.al_img);
+                });
+                createPage($('#paginator-mc'), data.totle, 2)
+            }
+            else {
+                console.log(data.d_info);
+                $.each(data.d_info, function (ind, val) {
+                    if (ind == 0) {
+                        $('.m-mc-lst > .m-list a').each(function () {
+                            $(this).removeAttr('href').children().eq(1).text('').parent().children().eq(0).children().attr('src', '')
+                        });
+                    }
+                    $('.m-mc-lst a:eq(' + String(ind) + ')').attr('href',
+                        val.al_url).children('p').text(val.al_desc).siblings().children().attr('src', val.al_img);
+                });
+            }
         });
-
-
     }
 
     function outDetail() {
@@ -548,10 +646,10 @@
         $('.m-right').show();
         $('.m-mc').hide();
         $('.m-block > .m-list').show();
+        $('#paginator').parent().show();
         $('.m-left-menuOne li').removeClass('active');
         $('.m-mc-type li:first').children().addClass('active').parent().siblings().children().removeClass('active');
     }
-
 
     $(".banner").slide({
         mainCell: "ul",
@@ -720,7 +818,6 @@
         }
     }
 
-
     $(function () {
 
         $('.m-city a').click(function () {
@@ -776,6 +873,7 @@
             $(this).siblings().children().removeClass('active');
             intoDetail();
         });
+
     });
 
 </script>
