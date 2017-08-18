@@ -223,7 +223,7 @@
         });
     }
 
-    $('.m-classify a:eq(0)').addClass('active');
+    $('.m-classify a:eq('+window.location.href.substring(37)+')').addClass('active');
     if (remote_ip_info) {
         $('#dx-citys').citys({
             required: false,

@@ -14,7 +14,7 @@ from tornado.web import Application
 from urls import handlers
 from utils.DB import Pg_db
 
-define('port', type=int, default=3671, help='run server on the given port')
+define('port', type=int, default=3676, help='run server on the given port')
 
 class Application(Application):
 
