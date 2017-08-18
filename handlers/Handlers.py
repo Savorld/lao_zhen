@@ -2,9 +2,12 @@
 
 from BaseHandler import BaseHandler
 from tornado import gen
+from datetime import datetime
 import math
 import logging
 import constants
+import requests
+from lxml import etree
 
 
 class Indexhandler(BaseHandler):
@@ -456,3 +459,22 @@ class DxInfoHandler(BaseHandler):
         # print 'args ====', tuple(args)
         # print 'ret ====', links
         self.write({'links': links, 'totle': totle, 'count': count[0]['count']})
+
+
+class DateInfoHandler(BaseHandler):
+    def get(self):
+        print 'iiii'
+        query = str(datetime.now())[:7]
+        print 'https://wannianrili.51240.com/ajax/?q=' + query
+        resp = requests.get(
+            'https://wannianrili.51240.com/ajax/?q=' + query)
+        print type(resp.text), resp.text
+        page = etree.HTML(resp.text)
+        print type(page), page
+        solarTerm = page.xpath(u'//span[text()="2017月08月18日 '
+                               u'详细信息"]/../following::div[1]//span[text('
+                               u')="节气"]/following::span[1]')
+        print  len(solarTerm), solarTerm, solarTerm[0].text
+        solarTerm_ret = solarTerm[0].text.replace(u'下一个节气', '').replace(u'，还有',
+                                                                        '')
+        self.write(dict(solarTerm=solarTerm_ret))

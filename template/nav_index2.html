@@ -1,5 +1,10 @@
 {%extends 'base.html'%}
 {%block content%}
+<style>
+    .m-option select {
+        color: #000;
+    }
+</style>
 <div class="main">
     <div class="m-top h-mid-topBg{{cid}}">
         {% module SubCla(cla_name) %}
@@ -324,7 +329,7 @@
 <script>
 
     function getSlider() {
-        cla_sel_num = window.location.href.substring(38);
+        cla_sel_num = window.location.href.substring(37);
         $('.m-classify li:eq(' + cla_sel_num + ')').addClass('on').children().addClass('active').parent().siblings().removeClass('on').children().removeClass('active');
     }
 
@@ -686,6 +691,9 @@
             });
 
         });
+        $('.m-classify li').click(function () {
+            filterInfo()
+        })
     });
 
 </script>

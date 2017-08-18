@@ -1,5 +1,37 @@
 {%extends 'base.html'%}
 {%block content%}
+<style>
+    .input-group {
+        margin-top: -18px;
+    }
+
+    .input-group .form-control {
+        height: 10px;
+        padding: 6px 0;
+    }
+
+    .input-group-btn > .btn {
+        height: 10px;
+        line-height: 10px;
+
+    }
+
+    .glyphicon {
+        top: -1px;
+        margin-left: -7px;
+    }
+
+    .input-group-btn > .btn {
+        width: 0;
+    }
+    .sh-mail{
+        margin-top: 20px;
+    }
+    .m-block .search-box{
+        overflow: visible;
+    }
+
+</style>
 <div class="main">
     <div class="m-top h-mid-topBg{{cid}}">
         {% module SubCla(cla_name) %}
@@ -28,8 +60,19 @@
                     <li>
                         <a href="{{d['d_url']}}" target="_blank">
                             <img src="{{d['d_img']}}"/>
+                            <div class="input-group" style="display: none;">
+                                <input type="text" class="form-control"
+                                       placeholder="">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"
+                                          aria-hidden="true"></span>
+                                </button>
+                                </span>
+                            </div>
                         </a>
                     </li>
+
                     {%end%}
                 </div>
                 {%end%}
@@ -67,101 +110,135 @@
 
                 </div>
             </form>
-            <div class="sh-mail">
-                <a href="http://www.hao123.com/mail" target="_blank">
-                    邮箱登录
-                </a>
+            <div class="btn-group dropup sh-mail">
+                <button type="button"
+                        class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    邮箱登录 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="http://mail.163.com/"
+                           target="_blank">@163.com</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="http://www.126.com/"
+                           target="_blank">@126.com</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="http://www.yeah.net/"
+                           target="_blank">@yeah.net</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="https://mail.qq.com/"
+                           target="_blank">@qq.com</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="https://mail.sohu.com/fe/#/login"
+                           target="_blank">@sohu.com</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="http://webmail30.189.cn/w2/" target="_blank">@189.cn</a>
+                    </li>
+
+                </ul>
             </div>
         </div>
     </div>
-</div>
-{%end%}
+    {%end%}
 
-{%block script%}
-<script>
-    $(".banner").slide({
-        mainCell: "ul",
-        titCell: "ol",
-        autoPage: true,
-        effect: "fold",
-        autoPlay: true
-    });
-    $("#brand-roll").slide({
-        mainCell: ".brand-roll",
-        titCenll: 'ul',
-        autoPage: true,
-        effect: "left",
-        autoPlay: true
-    });
-    $(function () {
-        index = window.location.href.substr(-1);
-        $('.star-nav').children().eq(index).children().addClass('active');
-        $("label[for='gd']").hide();
-        $("label[for='hs']").hide();
-        $('.sh-classify a').click(function () {
-            event.preventDefault();
-            $(this).addClass('active').siblings().removeClass('active');
-            search_1 = $('.sh-classify a').index($(this));
-            if (search_1 == 0) {
-                $("label[for='yd']").show();
-                $("label[for='gs']").show();
-                $("label[for='hs']").hide();
-                $("label[for='gd']").hide();
-                $("label[for='du'] input").prop('checked', 'true').siblings().removeAttr('checked');
-            }
-            if (search_1 == 1) {
-                $("label[for='yd']").hide();
-                $("label[for='gs']").hide();
-                $("label[for='hs']").show();
-                $("label[for='gd']").hide();
-                $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
-            }
+    {%block script%}
+    <script>
+        $(function () {
+            index = window.location.href.substr(-1);
+            $('.star-nav').children().eq(index).children().addClass('active');
+            $("label[for='gd']").hide();
+            $("label[for='hs']").hide();
+            $('.sh-classify a').click(function () {
+                event.preventDefault();
+                $(this).addClass('active').siblings().removeClass('active');
+                search_1 = $('.sh-classify a').index($(this));
+                if (search_1 == 0) {
+                    $("label[for='yd']").show();
+                    $("label[for='gs']").show();
+                    $("label[for='hs']").hide();
+                    $("label[for='gd']").hide();
+                    $("label[for='du'] input").prop('checked', 'true').siblings().removeAttr('checked');
+                }
+                if (search_1 == 1) {
+                    $("label[for='yd']").hide();
+                    $("label[for='gs']").hide();
+                    $("label[for='hs']").show();
+                    $("label[for='gd']").hide();
+                    $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
+                }
 
-            if (search_1 == 2) {
-                $("label[for='yd']").hide();
-                $("label[for='gs']").hide();
-                $("label[for='hs']").hide();
-                $("label[for='gd']").show();
-                $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
-            }
+                if (search_1 == 2) {
+                    $("label[for='yd']").hide();
+                    $("label[for='gs']").hide();
+                    $("label[for='hs']").hide();
+                    $("label[for='gd']").show();
+                    $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
+                }
 
-        });
+            });
 
-        $('.sh-btn input').click(function () {
-            event.preventDefault();
-            search_1 = $('.sh-classify a').index($('.sh-classify .active'));
-            search_2 = $('.sh-type input:checked').parent().index();
-            key_word = $('.sh-text input').val();
-            if (search_1 == 0) {
-                if (search_2 == 0) {
-                    window.open('http://www.baidu.com/s?wd=' + key_word);
-                }
-                if (search_2 == 1) {
-                    window.open('http://www.chinaso.com/search/pagesearch.htm?q=' + key_word);
+            $('.sh-btn input').click(function () {
+                event.preventDefault();
+                search_1 = $('.sh-classify a').index($('.sh-classify .active'));
+                search_2 = $('.sh-type input:checked').parent().index();
+                key_word = $('.sh-text input').val();
+                if (search_1 == 0) {
+                    if (search_2 == 0) {
+                        window.open('http://www.baidu.com/s?wd=' + key_word);
+                    }
+                    if (search_2 == 1) {
+                        window.open('http://www.chinaso.com/search/pagesearch.htm?q=' + key_word);
 
-                }
-                else {
-                    window.open('https://www.sogou.com/web?query=' + key_word);
+                    }
+                    else {
+                        window.open('https://www.sogou.com/web?query=' + key_word);
 
+                    }
                 }
-            }
-            if (search_1 == 1) {
-                if (search_2 == 0) {
-                    window.open('http://image.baidu.com/search/index?tn=baiduimage&ps=1&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&word=' + key_word);
+                if (search_1 == 1) {
+                    if (search_2 == 0) {
+                        window.open('http://image.baidu.com/search/index?tn=baiduimage&ps=1&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&word=' + key_word);
+                    }
+                    else {
+                        window.open('http://image.so.com/i?q=' + key_word);
+                    }
                 }
-                else {
-                    window.open('http://image.so.com/i?q=' + key_word);
+                if (search_1 == 2) {
+                    if (search_2 == 0) {
+                        window.open('http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D' + key_word);
+                    }
+                    else {
+                        window.open('http://ditu.amap.com/search?query=' + key_word);
+                    }
                 }
-            }
-            if (search_1 == 2) {
-                if (search_2 == 0) {
-                    window.open('http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D' + key_word);
+            });
+
+            $('.input-group input, .input-group-btn').click(function (e) {
+                return false;
+            });
+            $('.brand-roll-lst a').hover(function () {
+                if ($('.m-classify .active').parent().index() == 1) {
+                    $(this).children().eq(1).show();
                 }
-                else {
-                    window.open('http://ditu.amap.com/search?query=' + key_word);
+            }, function () {
+                $(this).children().eq(1).hide().children().eq(0).val('');
+
+            });
+            $('.input-group-btn button').click(function () {
+                h = $(this).parent().parent().parent().attr('href');
+                query = $(this).parent().prev().val();
+                h_query = 'https://s.taobao.com/search?q=' + query;
+                window.open(h_query);
+
+            });
+            $('.form-control').keyup(function (e) {
+                if (e.keyCode == 13) {
+                    query = $(this).val();
+                    h_query = 'https://s.taobao.com/search?q=' + query;
+                    window.open(h_query);
                 }
-            }
-        });
-    })
-</script>
-{%end%}
+            })
+        })
+    </script>
+    {%end%}

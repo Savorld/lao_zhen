@@ -16,6 +16,16 @@
         line-height: 10px;
 
     }
+    .glyphicon{
+        top:-1px;
+        margin-left:-7px;
+    }
+    .input-group-btn > .btn{
+        width:0;
+    }
+    .h-mid-block{
+        overflow: visible;
+    }
 
 </style>
 <div class="home-mid">
@@ -81,7 +91,7 @@
                 {%end%}
                 {%else%}
                 <ul class="h-mid-menuThree">
-                    {%for s_ind, s_cla in enumerate(cla[1])%}
+                    {%for s_ind, s_cla in enumerate(cla[1][:5])%}
                     <li>
                         <a href="/intoClass{{i}}-{{s_ind}}">{{s_cla['c_name']}}</a>
                     </li>
@@ -95,7 +105,7 @@
             <div class="brand-roll">
                 {%for ind, sli in enumerate(slides)%}
                 <ul class="brand-roll-lst">
-                    {%for item in sli%}
+                    {%for item in sli[:18]%}
                     <li>
                         <a href="{{item['d_url']}}" target="_Blank">
                             <img src="{{item['d_img']}}"/>
@@ -151,13 +161,6 @@
                         <input type="submit" name="" id="" value="搜索"/>
                     </div>
                 </form>
-                <!--<div class="sh-mail">-->
-                <!--<a href="http://www.hao123.com/mail" target="_blank">-->
-                <!--邮箱登录-->
-                <!--</a>-->
-                <!--</div>-->
-
-                <!-- Single button -->
                 <div class="btn-group dropup sh-mail">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
@@ -166,17 +169,17 @@
                         邮箱登录 <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">@163.com</a></li>
+                        <li><a href="http://mail.163.com/" target="_blank">@163.com</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">@126.com</a></li>
+                        <li><a href="http://www.126.com/" target="_blank">@126.com</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">@129.com</a></li>
+                        <li><a href="http://www.yeah.net/" target="_blank">@yeah.net</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">@qq.com</a></li>
+                        <li><a href="https://mail.qq.com/" target="_blank">@qq.com</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">@sohu.com</a></li>
+                        <li><a href="https://mail.sohu.com/fe/#/login" target="_blank">@sohu.com</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">@189.cn</a></li>
+                        <li><a href="http://webmail30.189.cn/w2/" target="_blank">@189.cn</a></li>
 
                     </ul>
                 </div>
@@ -331,11 +334,9 @@
         });
         $('.form-control').keyup(function (e) {
             if (e.keyCode == 13) {
-                console.log('il')
                 query = $(this).val();
                 h_query = 'https://s.taobao.com/search?q=' + query;
                 window.open(h_query);
-
             }
         })
     })

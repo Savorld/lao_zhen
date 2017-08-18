@@ -563,11 +563,13 @@ body {
 
 .dropdown-menu{
     left:35px;
+    border:3px solid #009944;
 }
 
-/*.dropdown-menu li:hover {*/
-    /*color: #000;*/
-/*}*/
+.dropdown-menu .divider{
+    height:2px;
+    background-color: #009944;
+}
 
 .h-mid-menuThree {
     background: #333;
