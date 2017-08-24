@@ -32,12 +32,12 @@ pg_options = dict(
     database = 'laozhen',
     user = 'postgres',
     password = 'wyc123',
-    host = 'localhost',
+    host = '45.78.52.25',
     port = 5432
 )
 
 
 redis_options = dict(
-    host = '',
+    host = '45.78.52.25',
     port = 6379
 )

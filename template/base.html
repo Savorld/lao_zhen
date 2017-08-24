@@ -208,10 +208,10 @@
                         var result = CalendarHelper.GetCNDate(d);
                         $('<span>' + date_str + '</span>').appendTo($('.hd-weather'));
                         $('<span>' + '周' + day + '</span>').appendTo($('.hd-weather'));
+                        $('<br/>').appendTo($('.hd-weather'));
                         $('<span>' + result.substr(7) + '</span>').appendTo($('.hd-weather'));
                         $.get('/api/date/info', function (data) {
                             console.log(data.solarTerm);
-                            $('<br/>').appendTo($('.hd-weather'));
                             $('<span>' + data.solarTerm + '</span>').appendTo($('.hd-weather'));
                         });
                     }

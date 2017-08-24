@@ -222,8 +222,8 @@
             getLinks(area_num);
         });
     }
-
-    $('.m-classify a:eq('+window.location.href.substring(37)+')').addClass('active');
+    href = window.location.href;
+    $('.m-classify a:eq(' + href[href.length - 1] + ')').addClass('active');
     if (remote_ip_info) {
         $('#dx-citys').citys({
             required: false,

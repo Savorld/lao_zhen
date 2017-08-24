@@ -329,7 +329,8 @@
 <script>
 
     function getSlider() {
-        cla_sel_num = window.location.href.substring(37);
+        href = window.location.href;
+        cla_sel_num = href[href.length - 1];
         $('.m-classify li:eq(' + cla_sel_num + ')').addClass('on').children().addClass('active').parent().siblings().removeClass('on').children().removeClass('active');
     }
 
