@@ -24,11 +24,14 @@
     .input-group-btn > .btn {
         width: 0;
     }
-    .sh-mail{
+
+    .sh-mail {
         margin-top: 20px;
     }
-    .m-block .search-box{
+
+    .m-block .search-box {
         overflow: visible;
+        height: 87px;
     }
 
 </style>
@@ -104,7 +107,7 @@
                     <label for="yd"><input type="radio" id="yd"
                                            name="sh-type"/>搜狗</label>
                     <label for="hs"><input type="radio" id="hs"
-                                           name="sh-type"/>好搜</label>
+                                           name="sh-type"/>国搜</label>
                     <label for="gd"><input type="radio" id="gd"
                                            name="sh-type"/>高德</label>
 
@@ -159,6 +162,7 @@
                     $("label[for='hs']").hide();
                     $("label[for='gd']").hide();
                     $("label[for='du'] input").prop('checked', 'true').siblings().removeAttr('checked');
+                    $('.sh-img').css('background', 'url(../img/bd.png) center no-repeat #fff');
                 }
                 if (search_1 == 1) {
                     $("label[for='yd']").hide();
@@ -166,6 +170,7 @@
                     $("label[for='hs']").show();
                     $("label[for='gd']").hide();
                     $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
+                    $('.sh-img').css('background', 'url(../img/bd.png) center no-repeat #fff');
                 }
 
                 if (search_1 == 2) {
@@ -174,6 +179,7 @@
                     $("label[for='hs']").hide();
                     $("label[for='gd']").show();
                     $("label[for='du'] input").prop('checked', 'checked').siblings().removeAttr('checked');
+                    $('.sh-img').css('background', 'url(../img/bd.png) center no-repeat #fff');
                 }
 
             });
@@ -201,7 +207,7 @@
                         window.open('http://image.baidu.com/search/index?tn=baiduimage&ps=1&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&word=' + key_word);
                     }
                     else {
-                        window.open('http://image.so.com/i?q=' + key_word);
+                        window.open('http://image.chinaso.com/so?q=' + key_word);
                     }
                 }
                 if (search_1 == 2) {
@@ -212,6 +218,58 @@
                         window.open('http://ditu.amap.com/search?query=' + key_word);
                     }
                 }
+            });
+
+            $('.sh-type input').click(function () {
+                i = $(this).parent().index();
+                p_i = $('.sh-classify .active').index();
+                console.log(p_i);
+                console.log(i);
+                if (p_i == 0) {
+                    if (i == 0) {
+                        $('.sh-img').css('background', 'url(../img/bd.png) center no-repeat #fff');
+                    }
+                    if (i == 1) {
+                        $('.sh-img').css('background', 'url(../img/gs.jpg) center no-repeat #fff');
+
+                    }
+                    if (i == 2) {
+                        $('.sh-img').css('background', 'url("../img/sg.jpg") center no-repeat #fff');
+                    }
+                }
+                else if (p_i == 1) {
+                    if (i == 0) {
+                        $('.sh-img').css('background', 'url(../img/bd.png) center no-repeat #fff');
+                    }
+                    if (i == 3) {
+                        console.log('gstp');
+                        $('.sh-img').css('background', 'url(../img/gstp.png) center no-repeat #fff');
+                    }
+                }
+                else {
+                    if (i == 0) {
+                        $('.sh-img').css('background', 'url(../img/bd.png) center no-repeat #fff');
+                    }
+                    if (i == 4) {
+                        $('.sh-img').css('background', 'url(../img/gd.jpg) center no-repeat #fff');
+                    }
+                }
+
+            });
+
+            $('.star-nav a').click(function (e) {
+                e.preventDefault();
+                $(this).addClass('active').parent().siblings().children().removeClass('active');
+                i = $(this).parent().index();
+                $.get('/intoClass0-' + String(i), {change: 1}, function (data) {
+//                    console.log(data);
+                    $('.m-hot a').each(function (i) {
+                        $(this).attr('href', data.hot[i].d_url).text(data.hot[i].d_desc);
+                    });
+                    $('.brand-roll-lst li a').each(function (i) {
+                        $(this).attr('href', data.details[i].d_url).children('img').attr('src', data.details[i].d_img);
+                    })
+                })
             });
 
             $('.input-group input, .input-group-btn').click(function (e) {

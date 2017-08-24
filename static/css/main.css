@@ -365,6 +365,11 @@ body {
     transform: translateX(8px);
 }
 
+.h-mid-menuTwo .on a {
+    transform: translateX(8px);
+    border-left: 5px solid #601986;
+}
+
 .h-mid-menuTwo a:hover:before {
     width: 8px;
 }
@@ -382,7 +387,7 @@ body {
 #brand-roll > a, .dx-banner > a {
     position: absolute;
     top: 50%;
-    margin-top: -144px;
+    margin-top: -43px;
     width: 29px;
     height: 65px;
 }
@@ -543,7 +548,7 @@ body {
     background: url(../img/icon-mail.png) 10px center no-repeat;
 }
 
-.sh-mail>.dropdown-menu>li>a {
+.sh-mail > .dropdown-menu > li > a {
     display: block;
     padding-left: 50px;
     line-height: 15px;
@@ -554,20 +559,20 @@ body {
 .sh-mail button {
     display: block;
     padding: 0 20px 0 0;
-    width:217px;
+    width: 217px;
     line-height: 36px;
     color: #009944;
     background: url(../img/icon-mail.png) 10px center no-repeat;
     border: 0;
 }
 
-.dropdown-menu{
-    left:35px;
-    border:3px solid #009944;
+.dropdown-menu {
+    left: 35px;
+    border: 3px solid #009944;
 }
 
-.dropdown-menu .divider{
-    height:2px;
+.dropdown-menu .divider {
+    height: 2px;
     background-color: #009944;
 }
 
@@ -1325,7 +1330,6 @@ body {
 .brand-lst a {
     display: block;
     margin: 5px;
-    height: 98px;
     line-height: 98px;
     text-align: center;
     background: #fff;
@@ -1777,6 +1781,6 @@ body {
     text-align: right;
 }
 
-.pagination>li>a {
+.pagination > li > a {
     cursor: pointer;
 }

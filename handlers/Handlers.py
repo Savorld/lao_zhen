@@ -1,16 +1,15 @@
 # -*- coding:utf-8 -*-
 
 from BaseHandler import BaseHandler
-from tornado import gen
+from tornado import gen, httpclient
 from datetime import datetime
+from lxml import etree
 import math
 import logging
 import constants
-import requests
-from lxml import etree
 
 
-class Indexhandler(BaseHandler):
+class IndexHandler(BaseHandler):
     @gen.coroutine
     def get(self):
         data = {'classes': []}
@@ -75,6 +74,7 @@ class Indexhandler(BaseHandler):
 class IntoClassHandler(BaseHandler):
     @gen.coroutine
     def get(self, cid, sub_cla_id):
+        change = self.get_argument('change', '')
         cla_name = yield self.query('select c_name from lz_classes where '
                                     'c_id=%s+1;', (cid,))
         footer_cla = yield self.query('select c_name from js_classes where '
@@ -84,12 +84,16 @@ class IntoClassHandler(BaseHandler):
                 'select d_url, d_desc from lz_details where d_class_id=%s+6 '
                 'and d_hot_order is not null ORDER by d_hot_order desc',
                 (sub_cla_id,))
-            sub_cla = yield self.query('select c_name from lz_classes where '
-                                       'c_level=2 and c_pid=%s+1;', (cid,))
             details = yield self.query('select a.d_img, a.d_url from '
                                        'lz_details a LEFT JOIN lz_classes b on '
                                        'd_class_id=c_id where d_class_id=%s+6;',
                                        (sub_cla_id,))
+            if change == '1':
+                self.write(dict(hot=hot, details=details))
+                self.finish()
+                return
+            sub_cla = yield self.query('select c_name from lz_classes where '
+                                       'c_level=2 and c_pid=%s+1;', (cid,))
             self.render('nav_index0.html', cid=cid, cla_name=cla_name[0],
                         footer_cla=footer_cla,
                         hot=hot, sub_cla=sub_cla, details=details)
@@ -238,7 +242,7 @@ class ShqInfoHandler(BaseHandler):
             #       "mi_city=%s and mi_pos=3 limit %s offset %s" % (city,
             #                                                       constants.PAGE_CAPACITY,
             #                                                       (int(
-            #                                                           page) - 1) * constants.PAGE_CAPACITY)
+                                                                      # page) - 1) * constants.PAGE_CAPACITY)
             self.write({'main_info': main_info})
             self.finish()
             return
@@ -379,6 +383,8 @@ class QyInfoHandler(BaseHandler):
                         sql += ' offset %s'
                         args.append((int(page) - 1) * constants.PAGE_CAPACITY)
                         ret = yield self.query(sql, tuple(args))
+                        print 'sql ====', sql
+                        print 'args ====', tuple(args)
                         print 'ret ====', ret
                         self.write({'ret': ret})
                         self.finish()
@@ -462,19 +468,39 @@ class DxInfoHandler(BaseHandler):
 
 
 class DateInfoHandler(BaseHandler):
+
+    @gen.coroutine
     def get(self):
-        print 'iiii'
-        query = str(datetime.now())[:7]
-        print 'https://wannianrili.51240.com/ajax/?q=' + query
-        resp = requests.get(
-            'https://wannianrili.51240.com/ajax/?q=' + query)
-        print type(resp.text), resp.text
-        page = etree.HTML(resp.text)
-        print type(page), page
-        solarTerm = page.xpath(u'//span[text()="2017月08月18日 '
-                               u'详细信息"]/../following::div[1]//span[text('
-                               u')="节气"]/following::span[1]')
-        print  len(solarTerm), solarTerm, solarTerm[0].text
+        query = str(datetime.now())
+        try:
+            solarTerm = self.redis.get('solar_term_%s' % query[:10])
+        except Exception as e:
+            logging.error(e)
+            solarTerm = None
+        if solarTerm:
+            self.write(dict(solarTerm=solarTerm))
+            self.finish()
+            return
+
+        http_client = httpclient.AsyncHTTPClient()
+        xpath_query = query[:4] + '月' + query[5:7] + '月' + query[8:10] + '日'
+        resp = yield http_client.fetch(
+            'https://wannianrili.51240.com/ajax/?q=' + query[:7])
+        # print '-----resp======', resp, '----type----', type(resp.body)
+        page = etree.HTML(resp.body.decode('utf-8'))
+        solarTerm = page.xpath(
+            u'//span[text()="' + unicode(xpath_query,
+                                         'utf-8') + u' 详细信息"]/../following::div['
+                                                    u'1]//span[text('
+                                                    u')="节气"]/following::span[1]')
+        # print len(solarTerm), solarTerm, type(solarTerm[0].text)
         solarTerm_ret = solarTerm[0].text.replace(u'下一个节气', '').replace(u'，还有',
                                                                         '')
+
+        try:
+            self.redis.setex('solar_term_%s' % query[:10],
+                             constants.SOLAR_TERM_EXPIRE_SECONDS,
+                             solarTerm_ret)
+        except Exception as e:
+            logging.error(e)
         self.write(dict(solarTerm=solarTerm_ret))

@@ -5,7 +5,7 @@ import config
 from handlers.BaseHandler import StaticFileHandler
 from handlers.Handlers import *
 handlers = [
-    (r'/', Indexhandler),
+    (r'/', IndexHandler),
     (r'/intoClass(\d)-(_?\d+)', IntoClassHandler),
     (r'/api/shq/info', ShqInfoHandler),
     (r'/api/qy/info', QyInfoHandler),

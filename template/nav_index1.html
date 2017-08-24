@@ -510,7 +510,14 @@
             },
             onPageClicked: function (event, originalEvent, type, page) {
                 if (flag == 1) {
-                    getCityInfo($('#sh-citys select[name="city"]').find('option:selected').text(), page)
+                    var c_city =
+                        $('#sh-citys select[name="city"]').find('option:selected').text();
+                    if (c_city) {
+                        getCityInfo(c_city, page)
+                    }
+                    else{
+                        getCityInfo($('#sh-citys select[name="province"]').find('option:selected').text(), page)
+                    }
                 }
                 else {
                     intoDetail(page)
@@ -825,7 +832,11 @@
             outDetail();
             $('.m-city a').removeClass('active');
             $(this).addClass('active');
-
+            c_city = $(this).text();
+            if (c_city === '沪' || c_city === '渝' || c_city === '津' || c_city
+                === '京' || c_city === '港' || c_city === '澳') {
+                getCityInfo(pro_name[$(this).text()]);
+            }
             $('#sh-citys-0').citys({
                 required: false,
                 nodata: 'disabled',
@@ -844,11 +855,6 @@
                     getCityInfo($('#sh-citys select[name="city"]').find('option:selected').text());
                 });
             });
-            c_city = $(this).text();
-            if (c_city === '沪' || c_city === '渝' || c_city === '津' || c_city
-                === '京' || c_city === '港' || c_city === '澳') {
-                getCityInfo(pro_name[$(this).text()]);
-            }
         });
 
 
