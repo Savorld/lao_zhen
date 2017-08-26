@@ -304,7 +304,7 @@ class QyInfoHandler(BaseHandler):
         sub_filter = self.get_argument('sub_filter', '')
         area_num = self.get_argument('area_num', '')
         page = self.get_argument('page', '')
-        print '-***-'.join([cla_ind, filter_cla, sub_filter, area_num, page])
+        # print '-***-'.join([cla_ind, filter_cla, sub_filter, area_num, page])
         if int(cla_ind) in (0, 3, 4):
             if not filter_cla:
                 filter_cla = yield self.query(
